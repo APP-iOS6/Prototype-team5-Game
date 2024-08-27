@@ -13,8 +13,11 @@ class SignUpViewController: UIViewController {
     private lazy var idTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "아이디" // 아이디 입력 필드
-        textField.keyboardType = .default
         textField.borderStyle = .roundedRect
+        textField.layer.borderWidth = 1
+        textField.layer.cornerRadius = 10
+        textField.layer.borderColor = UIColor.systemGray3.cgColor
+        textField.layer.masksToBounds = true
         return textField
     }()
     
@@ -23,6 +26,9 @@ class SignUpViewController: UIViewController {
         textField.placeholder = "비밀번호" // 비밀번호 입력 필드
         textField.isSecureTextEntry = true
         textField.borderStyle = .roundedRect
+        textField.layer.borderWidth = 1
+        textField.layer.cornerRadius = 10
+        textField.layer.borderColor = UIColor.systemGray3.cgColor
         return textField
     }()
     
@@ -31,6 +37,9 @@ class SignUpViewController: UIViewController {
         textField.placeholder = "비밀번호 확인" // 비밀번호 확인 입력 필드
         textField.isSecureTextEntry = true
         textField.borderStyle = .roundedRect
+        textField.layer.borderWidth = 1
+        textField.layer.cornerRadius = 10
+        textField.layer.borderColor = UIColor.systemGray3.cgColor
         return textField
     }()
     
@@ -38,6 +47,9 @@ class SignUpViewController: UIViewController {
         let textField = UITextField()
         textField.placeholder = "닉네임" // 닉네임 입력 필드
         textField.borderStyle = .roundedRect
+        textField.layer.borderWidth = 1
+        textField.layer.cornerRadius = 10
+        textField.layer.borderColor = UIColor.systemGray3.cgColor
         return textField
     }()
     
@@ -45,6 +57,9 @@ class SignUpViewController: UIViewController {
         let textField = UITextField()
         textField.placeholder = "생일 (YYYY-MM-DD)" // 생일 입력 필드
         textField.borderStyle = .roundedRect
+        textField.layer.borderWidth = 1
+        textField.layer.cornerRadius = 10
+        textField.layer.borderColor = UIColor.systemGray3.cgColor
         return textField
     }()
     
