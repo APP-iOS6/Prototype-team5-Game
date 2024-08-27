@@ -17,6 +17,8 @@
 		FB9172392C7D58F70048C059 /* BestPlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9172382C7D58F70048C059 /* BestPlay.swift */; };
 		FB91723C2C7D59070048C059 /* BestPlayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB91723B2C7D59070048C059 /* BestPlayData.swift */; };
 		FB9172402C7D593E0048C059 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB91723F2C7D593E0048C059 /* BaseViewController.swift */; };
+		FB9172422C7D5A320048C059 /* GameGenre.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9172412C7D5A320048C059 /* GameGenre.swift */; };
+		FB9172462C7D5F080048C059 /* GenreTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9172452C7D5F080048C059 /* GenreTabBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		FB9172382C7D58F70048C059 /* BestPlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestPlay.swift; sourceTree = "<group>"; };
 		FB91723B2C7D59070048C059 /* BestPlayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestPlayData.swift; sourceTree = "<group>"; };
 		FB91723F2C7D593E0048C059 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		FB9172412C7D5A320048C059 /* GameGenre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameGenre.swift; sourceTree = "<group>"; };
+		FB9172452C7D5F080048C059 /* GenreTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreTabBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +71,7 @@
 				FB91723A2C7D58FC0048C059 /* Data */,
 				FB9172352C7D58510048C059 /* Model */,
 				FB9172322C7D56E90048C059 /* MainTabView */,
+				FB9172442C7D5ED30048C059 /* Component */,
 				FB9172312C7D54870048C059 /* ViewController */,
 				FB91721D2C7D540A0048C059 /* AppDelegate.swift */,
 				FB91721F2C7D540A0048C059 /* SceneDelegate.swift */,
@@ -99,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				FB9172382C7D58F70048C059 /* BestPlay.swift */,
+				FB9172412C7D5A320048C059 /* GameGenre.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -109,6 +115,14 @@
 				FB91723B2C7D59070048C059 /* BestPlayData.swift */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		FB9172442C7D5ED30048C059 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				FB9172452C7D5F080048C059 /* GenreTabBar.swift */,
+			);
+			path = Component;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -184,11 +198,13 @@
 				FB9172372C7D58ED0048C059 /* MainTabBarViewController.swift in Sources */,
 				FB9172392C7D58F70048C059 /* BestPlay.swift in Sources */,
 				FB9172222C7D540A0048C059 /* ViewController.swift in Sources */,
+				FB9172422C7D5A320048C059 /* GameGenre.swift in Sources */,
 				FB91721E2C7D540A0048C059 /* AppDelegate.swift in Sources */,
 				FB9172202C7D540A0048C059 /* SceneDelegate.swift in Sources */,
 				FB9172402C7D593E0048C059 /* BaseViewController.swift in Sources */,
 				FB91723C2C7D59070048C059 /* BestPlayData.swift in Sources */,
 				FB9172342C7D576F0048C059 /* BasePostViewController.swift in Sources */,
+				FB9172462C7D5F080048C059 /* GenreTabBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
