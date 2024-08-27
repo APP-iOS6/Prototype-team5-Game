@@ -26,6 +26,7 @@
 		FE640D902C7DA3F300A110D6 /* BestPlayUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE640D8F2C7DA3F300A110D6 /* BestPlayUploadViewController.swift */; };
 		FE640D932C7DA73700A110D6 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE640D922C7DA73700A110D6 /* BaseView.swift */; };
 		FE640D952C7DB7FC00A110D6 /* CommunityUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE640D942C7DB7FC00A110D6 /* CommunityUploadViewController.swift */; };
+		FE640D972C7DC24E00A110D6 /* UploadTypeSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE640D962C7DC24E00A110D6 /* UploadTypeSelectViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		FE640D8F2C7DA3F300A110D6 /* BestPlayUploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestPlayUploadViewController.swift; sourceTree = "<group>"; };
 		FE640D922C7DA73700A110D6 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		FE640D942C7DB7FC00A110D6 /* CommunityUploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityUploadViewController.swift; sourceTree = "<group>"; };
+		FE640D962C7DC24E00A110D6 /* UploadTypeSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadTypeSelectViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 				FE640D8B2C7D8C5100A110D6 /* BaseHorizontalStackViewController.swift */,
 				FE640D8F2C7DA3F300A110D6 /* BestPlayUploadViewController.swift */,
 				FE640D942C7DB7FC00A110D6 /* CommunityUploadViewController.swift */,
+				FE640D962C7DC24E00A110D6 /* UploadTypeSelectViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -248,6 +251,7 @@
 				FE640D8C2C7D8C5100A110D6 /* BaseHorizontalStackViewController.swift in Sources */,
 				FE640D882C7D75C800A110D6 /* UIStackView+.swift in Sources */,
 				FB9172342C7D576F0048C059 /* BasePostViewController.swift in Sources */,
+				FE640D972C7DC24E00A110D6 /* UploadTypeSelectViewController.swift in Sources */,
 				FE640D812C7D6F0A00A110D6 /* GenreTabBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
