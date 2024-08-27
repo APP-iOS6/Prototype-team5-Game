@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5085F2F52C7D5C2A00F1DF47 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5085F2F42C7D5C2A00F1DF47 /* LoginViewController.swift */; };
-		5085F2F72C7D659B00F1DF47 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5085F2F62C7D659B00F1DF47 /* SignupViewController.swift */; };
+		5085F2F72C7D659B00F1DF47 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5085F2F62C7D659B00F1DF47 /* SignUpViewController.swift */; };
 		5085F2F92C7D734600F1DF47 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5085F2F82C7D734600F1DF47 /* FavoriteViewController.swift */; };
 		5085F2FB2C7D74B500F1DF47 /* FavoriteGameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5085F2FA2C7D74B500F1DF47 /* FavoriteGameModel.swift */; };
 		FB91721E2C7D540A0048C059 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB91721D2C7D540A0048C059 /* AppDelegate.swift */; };
@@ -25,7 +25,7 @@
 
 /* Begin PBXFileReference section */
 		5085F2F42C7D5C2A00F1DF47 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		5085F2F62C7D659B00F1DF47 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		5085F2F62C7D659B00F1DF47 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		5085F2F82C7D734600F1DF47 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		5085F2FA2C7D74B500F1DF47 /* FavoriteGameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteGameModel.swift; sourceTree = "<group>"; };
 		FB91721A2C7D540A0048C059 /* BestPlay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BestPlay.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -92,7 +92,7 @@
 				FB9172332C7D576F0048C059 /* BasePostViewController.swift */,
 				FB91723F2C7D593E0048C059 /* BaseViewController.swift */,
 				5085F2F42C7D5C2A00F1DF47 /* LoginViewController.swift */,
-				5085F2F62C7D659B00F1DF47 /* SignupViewController.swift */,
+				5085F2F62C7D659B00F1DF47 /* SignUpViewController.swift */,
 				5085F2F82C7D734600F1DF47 /* FavoriteViewController.swift */,
 			);
 			path = ViewController;
@@ -194,7 +194,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB9172372C7D58ED0048C059 /* MainTabBarViewController.swift in Sources */,
-				5085F2F72C7D659B00F1DF47 /* SignupViewController.swift in Sources */,
+				5085F2F72C7D659B00F1DF47 /* SignUpViewController.swift in Sources */,
 				FB9172392C7D58F70048C059 /* BestPlay.swift in Sources */,
 				FB9172222C7D540A0048C059 /* ViewController.swift in Sources */,
 				FB91721E2C7D540A0048C059 /* AppDelegate.swift in Sources */,

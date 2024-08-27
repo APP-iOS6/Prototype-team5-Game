@@ -10,56 +10,62 @@ import UIKit
 class SignUpViewController: UIViewController {
     
     // UI 요소들 정의
-    private lazy var idTextField: UITextField = {
-        let textField = UITextField()
+    private lazy var idTextField: PaddedTextField = {
+        let textField = PaddedTextField()
         textField.placeholder = "아이디" // 아이디 입력 필드
         textField.borderStyle = .roundedRect
         textField.layer.borderWidth = 1
         textField.layer.cornerRadius = 10
         textField.layer.borderColor = UIColor.systemGray3.cgColor
         textField.layer.masksToBounds = true
+        textField.isUserInteractionEnabled = true
         return textField
     }()
     
-    private lazy var passwordTextField: UITextField = {
-        let textField = UITextField()
+    private lazy var passwordTextField: PaddedTextField = {
+        let textField = PaddedTextField()
         textField.placeholder = "비밀번호" // 비밀번호 입력 필드
         textField.isSecureTextEntry = true
         textField.borderStyle = .roundedRect
         textField.layer.borderWidth = 1
         textField.layer.cornerRadius = 10
         textField.layer.borderColor = UIColor.systemGray3.cgColor
+        
+        textField.isUserInteractionEnabled = true
         return textField
     }()
     
-    private lazy var confirmPasswordTextField: UITextField = {
-        let textField = UITextField()
+    private lazy var confirmPasswordTextField: PaddedTextField = {
+        let textField = PaddedTextField()
         textField.placeholder = "비밀번호 확인" // 비밀번호 확인 입력 필드
         textField.isSecureTextEntry = true
         textField.borderStyle = .roundedRect
         textField.layer.borderWidth = 1
         textField.layer.cornerRadius = 10
         textField.layer.borderColor = UIColor.systemGray3.cgColor
+        textField.isUserInteractionEnabled = true
         return textField
     }()
     
-    private lazy var nicknameTextField: UITextField = {
-        let textField = UITextField()
+    private lazy var nicknameTextField: PaddedTextField = {
+        let textField = PaddedTextField()
         textField.placeholder = "닉네임" // 닉네임 입력 필드
         textField.borderStyle = .roundedRect
         textField.layer.borderWidth = 1
         textField.layer.cornerRadius = 10
         textField.layer.borderColor = UIColor.systemGray3.cgColor
+        textField.isUserInteractionEnabled = true
         return textField
     }()
     
-    private lazy var birthdayTextField: UITextField = {
-        let textField = UITextField()
+    private lazy var birthdayTextField: PaddedTextField = {
+        let textField = PaddedTextField()
         textField.placeholder = "생일 (YYYY-MM-DD)" // 생일 입력 필드
         textField.borderStyle = .roundedRect
         textField.layer.borderWidth = 1
         textField.layer.cornerRadius = 10
         textField.layer.borderColor = UIColor.systemGray3.cgColor
+        textField.isUserInteractionEnabled = true
         return textField
     }()
     
@@ -91,8 +97,9 @@ class SignUpViewController: UIViewController {
         // 스택뷰에 UI 요소들을 세로로 배치
         let stackView = UIStackView(arrangedSubviews: [profileImageView, idTextField, passwordTextField, confirmPasswordTextField, nicknameTextField, birthdayTextField, nextButton])
         stackView.axis = .vertical
-        stackView.spacing = 16
-        stackView.alignment = .fill
+        stackView.spacing = 30
+//        stackView.alignment = .fill
+        stackView.distribution = .equalSpacing
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -100,7 +107,8 @@ class SignUpViewController: UIViewController {
     // 뷰가 로드될 때 호출
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
+        title = "회원가입"
         setupInterface() // UI 설정
     }
     
@@ -110,8 +118,8 @@ class SignUpViewController: UIViewController {
         
         // 오토레이아웃 설정
         NSLayoutConstraint.activate([
-            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -100),
+            stackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            stackView.bottomAnchor.constraint(equalTo: view.keyboardLayoutGuide.topAnchor, constant: -50),
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             nextButton.heightAnchor.constraint(equalToConstant: 50) // 다음 버튼의 높이 설정

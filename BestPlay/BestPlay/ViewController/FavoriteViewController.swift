@@ -77,7 +77,7 @@ class FavoriteGameViewController: UIViewController, UIPickerViewDataSource, UIPi
     // 뷰가 로드될 때 호출
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         setupInterface() // UI 설정
     }
     
