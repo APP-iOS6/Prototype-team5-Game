@@ -17,7 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let tabBar: UITabBarController = UITabBarController()
         let home = ViewController()
-        let posting = ViewController()
+        let posting = CommunityUploadViewController()
         let profile = ViewController()
         
         tabBar.setViewControllers([home, posting, profile], animated: false)
