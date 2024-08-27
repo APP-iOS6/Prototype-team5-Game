@@ -19,6 +19,12 @@
 		FB9172402C7D593E0048C059 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB91723F2C7D593E0048C059 /* BaseViewController.swift */; };
 		FB9172422C7D5A320048C059 /* GameGenre.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9172412C7D5A320048C059 /* GameGenre.swift */; };
 		FB9172462C7D5F080048C059 /* GenreTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9172452C7D5F080048C059 /* GenreTabBar.swift */; };
+		FB9172482C7D6DF20048C059 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9172472C7D6DF20048C059 /* HomeViewController.swift */; };
+		FB91724B2C7D6F3F0048C059 /* PostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB91724A2C7D6F3F0048C059 /* PostCollectionViewCell.swift */; };
+		FB91724E2C7D87F30048C059 /* Extension+date.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB91724D2C7D87F30048C059 /* Extension+date.swift */; };
+		FB9172502C7D95C40048C059 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB91724F2C7D95C40048C059 /* HomeViewModel.swift */; };
+		FB9172522C7DB2BB0048C059 /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9172512C7DB2BB0048C059 /* CommentViewController.swift */; };
+		FB9172542C7DB6710048C059 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9172532C7DB6710048C059 /* CommentTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +42,12 @@
 		FB91723F2C7D593E0048C059 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		FB9172412C7D5A320048C059 /* GameGenre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameGenre.swift; sourceTree = "<group>"; };
 		FB9172452C7D5F080048C059 /* GenreTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreTabBar.swift; sourceTree = "<group>"; };
+		FB9172472C7D6DF20048C059 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		FB91724A2C7D6F3F0048C059 /* PostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCollectionViewCell.swift; sourceTree = "<group>"; };
+		FB91724D2C7D87F30048C059 /* Extension+date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+date.swift"; sourceTree = "<group>"; };
+		FB91724F2C7D95C40048C059 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		FB9172512C7DB2BB0048C059 /* CommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
+		FB9172532C7DB6710048C059 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,10 +80,12 @@
 		FB91721C2C7D540A0048C059 /* BestPlay */ = {
 			isa = PBXGroup;
 			children = (
+				FB91724C2C7D87E60048C059 /* Extension */,
 				FB91723A2C7D58FC0048C059 /* Data */,
 				FB9172352C7D58510048C059 /* Model */,
 				FB9172322C7D56E90048C059 /* MainTabView */,
 				FB9172442C7D5ED30048C059 /* Component */,
+				FB9172492C7D6F2A0048C059 /* Cells */,
 				FB9172312C7D54870048C059 /* ViewController */,
 				FB91721D2C7D540A0048C059 /* AppDelegate.swift */,
 				FB91721F2C7D540A0048C059 /* SceneDelegate.swift */,
@@ -88,6 +102,9 @@
 				FB9172212C7D540A0048C059 /* ViewController.swift */,
 				FB9172332C7D576F0048C059 /* BasePostViewController.swift */,
 				FB91723F2C7D593E0048C059 /* BaseViewController.swift */,
+				FB9172472C7D6DF20048C059 /* HomeViewController.swift */,
+				FB91724F2C7D95C40048C059 /* HomeViewModel.swift */,
+				FB9172512C7DB2BB0048C059 /* CommentViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -123,6 +140,23 @@
 				FB9172452C7D5F080048C059 /* GenreTabBar.swift */,
 			);
 			path = Component;
+			sourceTree = "<group>";
+		};
+		FB9172492C7D6F2A0048C059 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				FB91724A2C7D6F3F0048C059 /* PostCollectionViewCell.swift */,
+				FB9172532C7DB6710048C059 /* CommentTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		FB91724C2C7D87E60048C059 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				FB91724D2C7D87F30048C059 /* Extension+date.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,10 +232,16 @@
 				FB9172372C7D58ED0048C059 /* MainTabBarViewController.swift in Sources */,
 				FB9172392C7D58F70048C059 /* BestPlay.swift in Sources */,
 				FB9172222C7D540A0048C059 /* ViewController.swift in Sources */,
+				FB91724E2C7D87F30048C059 /* Extension+date.swift in Sources */,
 				FB9172422C7D5A320048C059 /* GameGenre.swift in Sources */,
+				FB9172522C7DB2BB0048C059 /* CommentViewController.swift in Sources */,
 				FB91721E2C7D540A0048C059 /* AppDelegate.swift in Sources */,
 				FB9172202C7D540A0048C059 /* SceneDelegate.swift in Sources */,
 				FB9172402C7D593E0048C059 /* BaseViewController.swift in Sources */,
+				FB9172482C7D6DF20048C059 /* HomeViewController.swift in Sources */,
+				FB9172502C7D95C40048C059 /* HomeViewModel.swift in Sources */,
+				FB9172542C7DB6710048C059 /* CommentTableViewCell.swift in Sources */,
+				FB91724B2C7D6F3F0048C059 /* PostCollectionViewCell.swift in Sources */,
 				FB91723C2C7D59070048C059 /* BestPlayData.swift in Sources */,
 				FB9172342C7D576F0048C059 /* BasePostViewController.swift in Sources */,
 				FB9172462C7D5F080048C059 /* GenreTabBar.swift in Sources */,
