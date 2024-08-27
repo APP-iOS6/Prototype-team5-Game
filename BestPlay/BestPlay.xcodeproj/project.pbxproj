@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BE5446D32C7D5B8900C00293 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5446D22C7D5B8900C00293 /* MyPageViewController.swift */; };
 		BE5446D52C7D706500C00293 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5446D42C7D706500C00293 /* SettingViewController.swift */; };
 		BE5446D72C7D7C6300C00293 /* TermsofUseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5446D62C7D7C6300C00293 /* TermsofUseViewController.swift */; };
+		BECB42422C7DC1CB00E170E7 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECB42412C7DC1CB00E170E7 /* MyPageViewController.swift */; };
 		FB91721E2C7D540A0048C059 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB91721D2C7D540A0048C059 /* AppDelegate.swift */; };
 		FB9172202C7D540A0048C059 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB91721F2C7D540A0048C059 /* SceneDelegate.swift */; };
 		FB9172222C7D540A0048C059 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9172212C7D540A0048C059 /* ViewController.swift */; };
@@ -23,9 +23,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		BE5446D22C7D5B8900C00293 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyPageViewController.swift; path = "../../../../../../Library/Mobile Documents/.Trash/Prototype-team5-Game/BestPlay/MyPageViewController.swift"; sourceTree = "<group>"; };
 		BE5446D42C7D706500C00293 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		BE5446D62C7D7C6300C00293 /* TermsofUseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsofUseViewController.swift; sourceTree = "<group>"; };
+		BECB42412C7DC1CB00E170E7 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		FB91721A2C7D540A0048C059 /* BestPlay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BestPlay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB91721D2C7D540A0048C059 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB91721F2C7D540A0048C059 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +86,7 @@
 		FB9172312C7D54870048C059 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				BECB42412C7DC1CB00E170E7 /* MyPageViewController.swift */,
 				BE5446D42C7D706500C00293 /* SettingViewController.swift */,
 				BE5446D62C7D7C6300C00293 /* TermsofUseViewController.swift */,
 				FB9172212C7D540A0048C059 /* ViewController.swift */,
@@ -99,7 +100,6 @@
 			isa = PBXGroup;
 			children = (
 				FB9172362C7D58ED0048C059 /* MainTabBarViewController.swift */,
-				BE5446D22C7D5B8900C00293 /* MyPageViewController.swift */,
 			);
 			path = MainTabView;
 			sourceTree = "<group>";
@@ -191,12 +191,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB9172372C7D58ED0048C059 /* MainTabBarViewController.swift in Sources */,
-				BE5446D32C7D5B8900C00293 /* MyPageViewController.swift in Sources */,
 				BE5446D72C7D7C6300C00293 /* TermsofUseViewController.swift in Sources */,
 				FB9172392C7D58F70048C059 /* BestPlay.swift in Sources */,
 				FB9172222C7D540A0048C059 /* ViewController.swift in Sources */,
 				FB91721E2C7D540A0048C059 /* AppDelegate.swift in Sources */,
 				BE5446D52C7D706500C00293 /* SettingViewController.swift in Sources */,
+				BECB42422C7DC1CB00E170E7 /* MyPageViewController.swift in Sources */,
 				FB9172202C7D540A0048C059 /* SceneDelegate.swift in Sources */,
 				FB9172402C7D593E0048C059 /* BaseViewController.swift in Sources */,
 				FB91723C2C7D59070048C059 /* BestPlayData.swift in Sources */,

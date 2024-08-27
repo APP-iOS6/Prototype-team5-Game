@@ -13,7 +13,7 @@ class SettingViewController: UIViewController {
     private lazy var vStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.spacing = 20
+        stackView.spacing = 40
         return stackView
     }()
     
