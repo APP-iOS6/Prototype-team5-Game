@@ -72,6 +72,5 @@ class BasePostViewController: BaseViewController {
         
         return btn
     }
-    //...였던것
-
+  
 }

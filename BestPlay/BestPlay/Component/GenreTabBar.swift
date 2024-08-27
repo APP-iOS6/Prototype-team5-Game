@@ -9,7 +9,12 @@ import UIKit
 
 class GenreTabBar: BaseViewController {
     
-    
+    private var selectedGenre: GameGenre = .all {
+        didSet {
+            updateSelectedGenre()
+        }
+    }
+    private var genreBtns: [UIButton] = []
     var actionTap: (GameGenre) -> Void
     
     lazy var scrollView: UIScrollView = {
@@ -35,7 +40,12 @@ class GenreTabBar: BaseViewController {
             genreBtn.frame = CGRect(x: index * 100 + 10, y: 0, width: 80, height: 50)
             scrollView.addSubview(genreBtn)
         }
-    
+        
+        NSLayoutConstraint.activate([
+            scrollView.widthAnchor.constraint(equalTo: view.widthAnchor),
+            scrollView.heightAnchor.constraint(equalTo: view.heightAnchor)
+        ])
+        
     }
     
     
@@ -43,11 +53,24 @@ class GenreTabBar: BaseViewController {
     func createGenre(_ genre: GameGenre) -> UIButton  {
         let btn = UIButton()
         btn.setTitle(genre.rawValue, for: .normal)
-        btn.setTitleColor(.black, for: .normal)
+        genre == .all ? btn.setTitleColor(.blue, for: .normal) :  btn.setTitleColor(.black, for: .normal)
+        
+        genreBtns.append(btn)
         btn.addAction(UIAction { _ in
             self.actionTap(genre)
+            self.selectedGenre = genre
         }, for: .touchUpInside)
         return btn
+    }
+    
+    func updateSelectedGenre() {
+        for button in genreBtns {
+            if button.titleLabel?.text == selectedGenre.rawValue {
+                button.setTitleColor(.blue, for: .normal) // 선택된 버튼을 파란색으로 설정
+            } else {
+                button.setTitleColor(.black, for: .normal) // 선택되지 않은 버튼은 검은색으로 설정
+            }
+        }
     }
     
     init(actionTap: @escaping (GameGenre) -> Void) {
