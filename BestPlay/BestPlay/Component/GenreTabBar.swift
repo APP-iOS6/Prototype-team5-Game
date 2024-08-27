@@ -37,7 +37,8 @@ class GenreTabBar: BaseViewController {
         
         for genre in GameGenre.allCases {
             let genreBtn = createGenre(genre)
-            hStack.addArrangedSubview(genreBtn)
+            
+            scrollView.addSubview(genreBtn)
         }
         
         NSLayoutConstraint.activate([
