@@ -75,6 +75,12 @@ class LoginViewController: BaseViewController {
         button.layer.cornerRadius = 10
         button.layer.masksToBounds = true
         button.backgroundColor = .systemBlue
+        button.addAction(UIAction { _ in
+            //재민님 탭바로 가야함
+            let tabBarViewController = MainTabBarViewController()
+            tabBarViewController.modalPresentationStyle = .fullScreen
+            self.present(tabBarViewController, animated: true)
+        }, for: .touchUpInside)
         return button
     }()
     
