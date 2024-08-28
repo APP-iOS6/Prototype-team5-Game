@@ -63,3 +63,6 @@ let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: now)!
 // 2일전 시간
 let oldday = Calendar.current.date(byAdding: .day, value: -2, to: now)!
 
+
+
+let dummyData: BestPlay =   BestPlay(userProfileImage: UIImage(named: "ez2onprofile"), userName: "이지 투온",createAt: now, thumNail: UIImage(named: "ez2on"), isVideo: false, videoUrl: "", text: "튜나쌤의 이지투온", heart: 0, comment: [],myheart: false, genre: [.best, .rhythm])
