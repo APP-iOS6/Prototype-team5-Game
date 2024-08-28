@@ -31,7 +31,7 @@ class LoginViewController: BaseViewController {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "최고의 플레이"
-        label.font = UIFont.boldSystemFont(ofSize: 34)
+        label.font = UIFont(name: "Paperlogy 7 Bold", size: 40)
         label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -41,7 +41,7 @@ class LoginViewController: BaseViewController {
     private lazy var subtitleLabel: UILabel = {
         let label = UILabel()
         label.text = "최고의 플레이에 도전해 보세요"
-        label.font = UIFont.systemFont(ofSize: 20)
+        label.font = UIFont(name: "Ghanachocolate", size: 20)
         label.textColor = .systemGray
         label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -96,7 +96,10 @@ class LoginViewController: BaseViewController {
         let button = UIButton(type: .system)
         button.setTitle("회원가입", for: .normal)
         // 회원가입 버튼이 눌렸을 때 실행되는 액션 설정
-        button.addTarget(self, action: #selector(handleSignUp), for: .touchUpInside)
+        button.addAction(UIAction { [weak self] _ in
+            let idVC = IDViewController()
+            self?.navigationController?.pushViewController(idVC, animated: true)
+        }, for: .touchUpInside)
         return button
     }()
     
@@ -111,9 +114,11 @@ class LoginViewController: BaseViewController {
     private lazy var naverButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("네이버 로그인", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         button.backgroundColor = .systemGreen
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 10
+        button.tintColor = .white
         return button
     }()
     
@@ -121,6 +126,7 @@ class LoginViewController: BaseViewController {
     private lazy var kakaoButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("카카오 로그인", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         button.backgroundColor = .yellow
         button.setTitleColor(.black, for: .normal)
         button.layer.cornerRadius = 10
@@ -131,6 +137,7 @@ class LoginViewController: BaseViewController {
     private lazy var googleButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("구글 로그인", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         button.backgroundColor = .white
         button.setTitleColor(.black, for: .normal)
         button.layer.cornerRadius = 10
@@ -139,16 +146,7 @@ class LoginViewController: BaseViewController {
         return button
     }()
 
-    // 페이스북 로그인 버튼
-    private lazy var facebookButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("페이스북 로그인", for: .normal)
-        button.backgroundColor = .systemBlue
-        button.setTitleColor(.white, for: .normal)
-        button.layer.cornerRadius = 10
-        return button
-    }()
-    
+
     // 로그인 관련 UI 요소들을 담은 스택뷰
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [idTextField, passwordTextField, loginButton])
@@ -170,12 +168,6 @@ class LoginViewController: BaseViewController {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
-    
-    // 회원가입 화면으로 이동하는 액션 처리
-    @objc private func handleSignUp() {
-        let signUpVC = SignUpViewController()
-        navigationController?.pushViewController(signUpVC, animated: true)
-    }
     
     // 뷰가 로드될 때 호출되는 메서드
     override func viewDidLoad() {
@@ -210,8 +202,8 @@ class LoginViewController: BaseViewController {
         
         NSLayoutConstraint.activate([
             // 제목 레이블 레이아웃 설정
-            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
-            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 46),
+            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             
             // 부제목 레이블 레이아웃 설정
             subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 48),
@@ -221,7 +213,7 @@ class LoginViewController: BaseViewController {
             stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -20),
             stackView.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -48),
+            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
             // 소셜 로그인 스택뷰 레이아웃 설정
             socialStackView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 30),
