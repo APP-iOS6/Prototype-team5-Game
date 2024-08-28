@@ -7,9 +7,10 @@
 
 import UIKit
 
+// 회원가입 기본 ViewController
 class BaseSignUpViewController: UIViewController {
     
-    // 공통적으로 사용할 UI 요소들
+    // 공통 UI 요소
     let progressView = UIProgressView(progressViewStyle: .default)
     let nextButton = UIButton(type: .system)
     var progressValue: Float = 0.0 {
@@ -22,11 +23,11 @@ class BaseSignUpViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
 
-        setupInterface()
-        setupLayout()
+        setupInterface() // UI 설정
+        setupLayout() // 레이아웃 설정
     }
 
-    // 공통 UI 설정 메서드
+    // 공통 UI 설정
     func setupInterface() {
         progressView.progress = 0.25
         progressView.translatesAutoresizingMaskIntoConstraints = false
@@ -41,7 +42,7 @@ class BaseSignUpViewController: UIViewController {
         view.addSubview(nextButton)
     }
 
-    // 공통 레이아웃 설정 메서드
+    // 공통 레이아웃 설정
     func setupLayout() {
         NSLayoutConstraint.activate([
             progressView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
@@ -55,12 +56,13 @@ class BaseSignUpViewController: UIViewController {
         ])
     }
     
+    // Progress 애니메이션
     func animateProgress() {
         progressView.setProgress(progressValue, animated: true)
     }
 
-    // 공통 동작 메서드 (필요 시 추가 가능)
+    // '다음' 버튼 동작 (자식 클래스에서 override 가능)
     @objc func handleNextButtonTapped() {
-        // 각 자식 클래스에서 override 하여 사용 가능
+        // 각 자식 클래스에서 구현
     }
 }

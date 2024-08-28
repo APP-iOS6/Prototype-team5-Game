@@ -7,31 +7,34 @@
 
 import UIKit
 
+// 프로필 이미지 선택 화면 ViewController
 class ProfileImageViewController: BaseSignUpViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    // 설명 라벨 설정
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
-        label.text = "사용하실 이미지를 선택해주세요." // 설명 라벨 텍스트
-        label.font = UIFont(name: "Paperlogy 7 Bold", size: 18) // 원하는 폰트와 크기 설정
-        label.textColor = UIColor.systemGray // 글씨색 회색으로 설정
-        label.numberOfLines = 1 // 여러 줄 텍스트 허용
-        label.textAlignment = .left // 텍스트 가운데 정렬
+        label.text = "사용하실 이미지를 선택해주세요."
+        label.font = UIFont(name: "Paperlogy 7 Bold", size: 18)
+        label.textColor = UIColor.systemGray
+        label.numberOfLines = 1
+        label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
+    // 프로필 이미지 뷰 설정
     private lazy var profileImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill // 이미지가 동그랗게 표시되도록 설정
+        imageView.contentMode = .scaleAspectFill
         imageView.image = UIImage(systemName: "person.circle")
         imageView.tintColor = .gray
         imageView.layer.cornerRadius = 50
         imageView.clipsToBounds = true
-        imageView.layer.masksToBounds = true // 이미지가 이미지뷰의 경계를 넘어가지 않도록 설정
+        imageView.layer.masksToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         imageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        imageView.isUserInteractionEnabled = true  // 이미지뷰 터치 활성화
+        imageView.isUserInteractionEnabled = true
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleImageTap))
         imageView.addGestureRecognizer(tapGesture)
         return imageView
@@ -39,10 +42,11 @@ class ProfileImageViewController: BaseSignUpViewController, UIImagePickerControl
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        progressValue = 1.0
-        setupProfileImageView()
+        progressValue = 1.0 // 진행 상태 값 설정
+        setupProfileImageView() // 프로필 이미지 뷰 설정
     }
 
+    // 프로필 이미지 뷰 레이아웃 설정
     private func setupProfileImageView() {
         view.addSubview(descriptionLabel)
         view.addSubview(profileImageView)
@@ -59,6 +63,7 @@ class ProfileImageViewController: BaseSignUpViewController, UIImagePickerControl
         nextButton.addTarget(self, action: #selector(handleNextButtonTapped), for: .touchUpInside)
     }
 
+    // 프로필 이미지 선택 처리
     @objc private func handleImageTap() {
         let alert = UIAlertController(title: "프로필 이미지", message: "이미지를 선택하세요", preferredStyle: .actionSheet)
         
@@ -75,6 +80,7 @@ class ProfileImageViewController: BaseSignUpViewController, UIImagePickerControl
         present(alert, animated: true, completion: nil)
     }
 
+    // 이미지 선택 화면 표시
     private func presentImagePicker() {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
@@ -82,7 +88,7 @@ class ProfileImageViewController: BaseSignUpViewController, UIImagePickerControl
         present(imagePicker, animated: true, completion: nil)
     }
 
-    // UIImagePickerControllerDelegate 메서드
+    // 이미지 선택 완료 시 호출되는 메서드
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let selectedImage = info[.originalImage] as? UIImage {
             profileImageView.image = selectedImage
@@ -90,16 +96,17 @@ class ProfileImageViewController: BaseSignUpViewController, UIImagePickerControl
         dismiss(animated: true, completion: nil)
     }
 
+    // 이미지 선택 취소 시 호출되는 메서드
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
 
+    // '다음' 버튼 동작
     override func handleNextButtonTapped() {
         let favoriteGameVC = FavoriteGameViewController()
         navigationController?.pushViewController(favoriteGameVC, animated: true)
     }
 }
-
 
 #Preview {
     ProfileImageViewController()

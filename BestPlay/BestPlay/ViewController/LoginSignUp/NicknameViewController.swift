@@ -7,19 +7,22 @@
 
 import UIKit
 
+// 닉네임 입력 화면 ViewController
 class NicknameViewController: BaseSignUpViewController {
     
+    // 설명 라벨 설정
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
-        label.text = "사용하실 닉네임을 입력해주세요." // 설명 라벨 텍스트
-        label.font = UIFont(name: "Paperlogy 7 Bold", size: 18) // 원하는 폰트와 크기 설정
-        label.textColor = UIColor.systemGray // 글씨색 회색으로 설정
-        label.numberOfLines = 1 // 여러 줄 텍스트 허용
-        label.textAlignment = .left // 텍스트 가운데 정렬
+        label.text = "사용하실 닉네임을 입력해주세요."
+        label.font = UIFont(name: "Paperlogy 7 Bold", size: 18)
+        label.textColor = UIColor.systemGray
+        label.numberOfLines = 1
+        label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
+    // 닉네임 입력 필드 설정
     private lazy var nicknameTextField: PaddedTextField = {
         let textField = PaddedTextField()
         textField.placeholder = "닉네임"
@@ -33,10 +36,11 @@ class NicknameViewController: BaseSignUpViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        progressValue = 0.75
-        setupNicknameView()
+        progressValue = 0.75 // 진행 상태 값 설정
+        setupNicknameView() // 닉네임 뷰 설정
     }
 
+    // 닉네임 뷰 레이아웃 설정
     private func setupNicknameView() {
         view.addSubview(descriptionLabel)
         view.addSubview(nicknameTextField)
@@ -54,12 +58,12 @@ class NicknameViewController: BaseSignUpViewController {
         nextButton.addTarget(self, action: #selector(handleNextButtonTapped), for: .touchUpInside)
     }
 
+    // '다음' 버튼 동작
     override func handleNextButtonTapped() {
         let profileVC = ProfileImageViewController()
         navigationController?.pushViewController(profileVC, animated: true)
     }
 }
-
 
 #Preview {
     NicknameViewController()

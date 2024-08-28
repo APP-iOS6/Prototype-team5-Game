@@ -7,8 +7,10 @@
 
 import UIKit
 
+// 아이디 입력 화면 ViewController
 class IDViewController: BaseSignUpViewController {
 
+    // 아이디 입력 필드 설정
     private lazy var idTextField: PaddedTextField = {
         let textField = PaddedTextField()
         textField.placeholder = "아이디"
@@ -20,23 +22,25 @@ class IDViewController: BaseSignUpViewController {
         return textField
     }()
 
+    // 설명 레이블 설정
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.text = "로그인에 사용할\n아이디를 입력해주세요"
         label.font = UIFont(name: "Paperlogy 7 Bold", size: 18)
         label.textColor = UIColor.systemGray
         label.numberOfLines = 0 // 여러 줄 텍스트 허용
-        label.textAlignment = .left // 텍스트 가운데 정렬
+        label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        progressValue = 0.25
-        setupIDView()
+        progressValue = 0.25 // 진행 상태 값 설정
+        setupIDView() // IDView 설정
     }
 
+    // IDView 레이아웃 설정
     private func setupIDView() {
         view.addSubview(descriptionLabel)
         view.addSubview(idTextField)
@@ -54,16 +58,12 @@ class IDViewController: BaseSignUpViewController {
         nextButton.addTarget(self, action: #selector(handleNextButtonTapped), for: .touchUpInside)
     }
 
+    // '다음' 버튼 동작
     override func handleNextButtonTapped() {
         let passwordVC = PasswordViewController()
         navigationController?.pushViewController(passwordVC, animated: true)
     }
 }
-
-#Preview {
-    IDViewController()
-}
-
 
 #Preview {
     IDViewController()
