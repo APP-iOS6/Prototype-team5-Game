@@ -20,6 +20,13 @@ class CommentViewController: BaseViewController {
     }()
     
   
+    private lazy var headerHStack: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .horizontal
+        stack.distribution = .fill
+        return stack
+    }()
+    
     //닫기 버튼
     private lazy var closeBtn: UIButton = {
         let btn = UIButton()
@@ -29,6 +36,13 @@ class CommentViewController: BaseViewController {
             self.dismiss(animated: true)
         }, for: .touchUpInside)
         return btn
+    }()
+    
+    private lazy var commentLabel: UILabel = {
+        let label = UILabel()
+        label.text = "댓글"
+        label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        return label
     }()
     
     //댓글 테이블 뷰
@@ -51,8 +65,11 @@ class CommentViewController: BaseViewController {
         super.setupInterface()
         view.addSubview(mainVStack)
             
+        headerHStack.addArrangedSubview(commentLabel)
+        headerHStack.addArrangedSubview(closeBtn)
+        
        
-        mainVStack.addArrangedSubview(closeBtn)
+        mainVStack.addArrangedSubview(headerHStack)
         mainVStack.addArrangedSubview(commentTableView)
         let safeGuide = view.safeAreaLayoutGuide
         
@@ -63,9 +80,17 @@ class CommentViewController: BaseViewController {
             mainVStack.trailingAnchor.constraint(equalTo: safeGuide.trailingAnchor),
             mainVStack.bottomAnchor.constraint(equalTo: safeGuide.bottomAnchor),
             
+            
+            headerHStack.topAnchor.constraint(equalTo: mainVStack.topAnchor),
+            headerHStack.leadingAnchor.constraint(equalTo: mainVStack.leadingAnchor,constant: 10),
+            headerHStack.trailingAnchor.constraint(equalTo: mainVStack.trailingAnchor, constant: -10),
+            
+            
+            
             //댓글창 닫기버튼 앵커 위치 수정 필요
-            closeBtn.trailingAnchor.constraint(equalTo: mainVStack.trailingAnchor, constant: -15),
-            closeBtn.topAnchor.constraint(equalTo: mainVStack.topAnchor, constant: 10),
+     
+            closeBtn.widthAnchor.constraint(equalToConstant: 50),
+            closeBtn.heightAnchor.constraint(equalToConstant: 50),
             
             //댓글 테이블 뷰 앵커
             commentTableView.leadingAnchor.constraint(equalTo: mainVStack.leadingAnchor),
