@@ -84,10 +84,6 @@ class PostCollectionViewCell: UICollectionViewCell {
         return view
     }()
     
-    private lazy var postText: UILabel = {
-        let label = UILabel()
-        return label
-    }()
     
     //푸터
     private lazy var footerHStack: UIStackView = {
@@ -96,17 +92,20 @@ class PostCollectionViewCell: UICollectionViewCell {
         return stack
     }()
     
+    //좋아요 버튼
     private lazy var heartButton: UIButton = {
         let button = UIButton()
         return button
     }()
     
+    //좋아요 수
     private lazy var heartLabel: UILabel = {
         let label = UILabel()
         label.text = "12"
         return label
     }()
     
+    //댓글 버튼
     private lazy var commentButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "doc.text"), for: .normal)
@@ -114,15 +113,38 @@ class PostCollectionViewCell: UICollectionViewCell {
         return button
     }()
     
+    //댓글 라벨
     private lazy var commentLabel: UILabel = {
         let label = UILabel()
         return label
     }()
     
+    //글 본문 스택
+    private lazy var postHStack: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .horizontal
+        return stack
+    }()
+    
+    //글 본문
+    private lazy var postText: UILabel = {
+        let label = UILabel()
+        label.font = .preferredFont(forTextStyle: .body)
+        return label
+    }()
+    
+    //더보기 텍스트
+    private lazy var moreTextLabel: UILabel = {
+        let label = UILabel()
+        label.text = "더보기"
+        label.font = UIFont.systemFont(ofSize: 14)
+        label.textColor = .gray
+        return label
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+        contentView.backgroundColor = .systemBackground
         setupInterface()
     }
     
@@ -142,10 +164,13 @@ class PostCollectionViewCell: UICollectionViewCell {
         headerVStack.addArrangedSubview(userNameLabel)
         headerVStack.addArrangedSubview(createAtLabel)
         
+        postHStack.addArrangedSubview(postText)
+        postHStack.addArrangedSubview(moreTextLabel)
+
         postVStack.addArrangedSubview(emptyView)
         postVStack.addArrangedSubview(playThumnailImage)
         postVStack.addArrangedSubview(footerHStack)
-        postVStack.addArrangedSubview(postText)
+        postVStack.addArrangedSubview(postHStack)
         
         
         footerHStack.addArrangedSubview(heartButton)
@@ -168,6 +193,7 @@ class PostCollectionViewCell: UICollectionViewCell {
             
             
             //헤더 HStack 리딩, 트레일링 앵커
+            headerHStack.topAnchor.constraint(equalTo: postVStack.topAnchor, constant: 10),
             headerHStack.leadingAnchor.constraint(equalTo: postVStack.leadingAnchor, constant: 10),
             headerHStack.trailingAnchor.constraint(equalTo: postVStack.trailingAnchor, constant: -10),
             
@@ -179,8 +205,8 @@ class PostCollectionViewCell: UICollectionViewCell {
             playThumnailImage.topAnchor.constraint(equalTo: headerHStack.bottomAnchor, constant: 16),
             playThumnailImage.leadingAnchor.constraint(equalTo: postVStack.leadingAnchor),
             playThumnailImage.trailingAnchor.constraint(equalTo: postVStack.trailingAnchor),
-            playThumnailImage.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.7),
-            //컨텐트 뷰의 0.7 비율만큼 차지
+            playThumnailImage.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.65),
+            //컨텐트 뷰의 0.65 비율만큼 차지
             
             postText.leadingAnchor.constraint(equalTo: postVStack.leadingAnchor, constant: 15),
             postText.trailingAnchor.constraint(equalTo: postVStack.trailingAnchor, constant: -15),
@@ -197,6 +223,13 @@ class PostCollectionViewCell: UICollectionViewCell {
             commentButton.widthAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.1),
             commentButton.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.1),
             
+            
+            postHStack.topAnchor.constraint(equalTo: footerHStack.bottomAnchor),
+            postHStack.leadingAnchor.constraint(equalTo: footerHStack.leadingAnchor),
+            postHStack.trailingAnchor.constraint(equalTo: footerHStack.trailingAnchor),
+            postHStack.bottomAnchor.constraint(equalTo: postVStack.bottomAnchor),
+            postText.widthAnchor.constraint(equalTo: postVStack.widthAnchor, multiplier: 0.8)
+            
         ])
         
     }
@@ -205,16 +238,24 @@ class PostCollectionViewCell: UICollectionViewCell {
         post: BestPlay,
         heartTap:@escaping () -> Void,
         commentTap: @escaping () -> Void,
-        thumbnailTap: @escaping () -> Void
+        thumbnailTap: @escaping () -> Void,
+        moreBtnTap: @escaping () -> Void
     ) {
         userProfileImageVIew.image = post.userProfileImage //유저 프로필
         userNameLabel.text = post.userName  //유저 이름
-        createAtLabel.text = post.createAt.formattedDay + post.createAt.formattedTime //날짜
+        createAtLabel.text = post.createAt.formattedTimeAgo //날짜
         playThumnailImage.image = post.thumNail //썸네일
         heartLabel.text = String(post.heart) //하트갯수
         postText.text = post.text
         
         commentLabel.text = "\(post.comment.count)" //댓글 개수
+        
+        
+        
+        moreBtn.removeTarget(nil, action: nil, for: .allEvents)
+        moreBtn.addAction(UIAction { _ in moreBtnTap()}, for: .touchUpInside)
+        
+        
         
         heartButton.removeTarget(nil, action: nil, for: .allEvents) //하트버튼 이벤트 다 제거 이거 안하면 막 꼬임
         heartButton.addAction(UIAction{_ in heartTap()}, for: .touchUpInside) //액션

@@ -9,13 +9,16 @@ import Foundation
 
 
 enum GameGenre: String, CaseIterable {
-    case all
-    case rpg
-    case fps
-    case sport
-    case arcade
-    case rhythm
-    case puzzle
+    case filter = ""
+    case all = "All"
+    case best = "TOP10"
+    case popular = "인기"
+    case rpg = "RPG"
+    case fps = "FPS"
+    case sport = "스포츠"
+    case arcade = "아케이드"
+    case rhythm = "리듬"
+    case puzzle = "퍼즐"
 }
     
 
