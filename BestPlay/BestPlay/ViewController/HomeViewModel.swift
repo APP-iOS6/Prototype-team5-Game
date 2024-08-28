@@ -17,7 +17,7 @@ final class HomeViewModel {
     
     //현재 선택된 장르
     private var selectedGenre: GameGenre = .all
-    
+    private var selectedId: String = ""
     
     init() {
         postList = PostData //미리 서넝ㄴ해둔 더미 데이터
@@ -52,7 +52,22 @@ final class HomeViewModel {
         if selectedGenre == .all {
             filterPost = postList
         } else {
-            filterPost = postList.filter { $0.genre == selectedGenre }
+            filterPost = postList.filter { $0.genre.contains(selectedGenre) }
+        }
+    }
+    
+    
+    //현재 선택된 포스트의 id를 변경하는 함수
+    func updateSelectedId(_ id: String) {
+        self.selectedId = id
+    }
+    
+    //차단하기 버튼이 눌려 포스트를 삭제하는 함수
+    func blockPost() {
+        if let index = postList.firstIndex(where: { $0.id == self.selectedId
+        }) {
+            self.postList.remove(at: index)
+            filterPostsBySelectedGenre()
         }
     }
 }
