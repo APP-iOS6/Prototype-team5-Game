@@ -6,10 +6,11 @@
 //
 
 import UIKit
-// 설정 페이지 완성
+
+// 설정 페이지 ViewController
 class SettingViewController: UIViewController {
     
-    
+    // view에 들어갈 vStackView
     private lazy var vStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -17,6 +18,7 @@ class SettingViewController: UIViewController {
         return stackView
     }()
     
+    // 클릭시 이용약관을 보여주는 페이지 시트로 이동하는 useButton
     private lazy var useButton: UIButton = {
         let button = UIButton()
         button.setTitle("이용약관", for: .normal)
@@ -33,11 +35,11 @@ class SettingViewController: UIViewController {
         return button
     }()
     
+    // 로그아웃 클릭 시 경고문과 함께 보여주는 logOutButton
     private lazy var logOutButton: UIButton = {
         let button = UIButton()
         button.setTitle("로그아웃", for: .normal)
         button.backgroundColor = .systemGray
-        
         
         button.addAction(UIAction { _ in
             
@@ -65,42 +67,45 @@ class SettingViewController: UIViewController {
         
         return button
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         view.backgroundColor = .systemBackground
         
         title = "Settings"
         
-        setUpInterFace()
+        buildInterface()
     }
-
-    func setUpInterFace() {
-        
-        let safeGuide = view.safeAreaLayoutGuide
-        
+    
+    func buildInterface() {
+        setupSubviews()
+        setupConstraints()
+    }
+    
+    
+    // view의 하위요소를 설정하고 추가하고 UI요소들의 제약조건을 추가하는 setUpInterFace
+    private func setupSubviews() {
         view.addSubview(vStackView)
         vStackView.addArrangedSubview(useButton)
         vStackView.addArrangedSubview(logOutButton)
-        
+    }
+    
+    // UI요소들의 레이아웃 제약조건을 설정하는 setupConstraints
+    private func setupConstraints() {
+        // view.safeAreaLayoutGuide을 담아내는 변수 safeGuide
+        let safeGuide = view.safeAreaLayoutGuide
         
         vStackView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            
             vStackView.centerXAnchor.constraint(equalTo: safeGuide.centerXAnchor),
             vStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 300),
             vStackView.widthAnchor.constraint(equalToConstant: 300),
         ])
     }
-    
-    
-    
-    
-    
-    
 }
+
 #Preview {
     SettingViewController()
 }
