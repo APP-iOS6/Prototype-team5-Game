@@ -15,7 +15,6 @@ class MyPageViewController: UIViewController, UICollectionViewDataSource, UIColl
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 30
-        stackView.alignment = .leading
         return stackView
     }()
     
@@ -37,6 +36,7 @@ class MyPageViewController: UIViewController, UICollectionViewDataSource, UIColl
         return stackView
     }()
     
+    // userNameLabel이 들어갈 NameHStackView
     private lazy var NameHStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
@@ -47,15 +47,15 @@ class MyPageViewController: UIViewController, UICollectionViewDataSource, UIColl
     
     
     // collectionView의 위치를 잡아주는 collectionVStackView
-//    private lazy var collectionVStackView: UIStackView = {
-//        let stackView = UIStackView()
-//        stackView.axis = .vertical
-//        stackView.spacing = 30
-//        return stackView
-//    }()
+    //    private lazy var collectionVStackView: UIStackView = {
+    //        let stackView = UIStackView()
+    //        stackView.axis = .vertical
+    //        stackView.spacing = 30
+    //        return stackView
+    //    }()
     
     // userImage랑 userName 사이의 구분선
-    private lazy var userImageSeparator: UIView = {
+    private lazy var ButtonSeparator: UIView = {
         let uIView = UIView()
         uIView.backgroundColor = UIColor.black
         
@@ -66,9 +66,9 @@ class MyPageViewController: UIViewController, UICollectionViewDataSource, UIColl
     private lazy var userNameLabel: UILabel = {
         let label = UILabel()
         label.text = "학살 이정민"
-        label.font = .systemFont(ofSize: 20)
+        label.font = .systemFont(ofSize: 17)
         label.lineBreakMode = .byTruncatingTail
-        label.textAlignment = .center
+        label.textAlignment = .left
         return label
     }()
     
@@ -90,33 +90,34 @@ class MyPageViewController: UIViewController, UICollectionViewDataSource, UIColl
         config.background.backgroundColor = .gray
         config.buttonSize = .small
         
-        let button = UIButton(configuration: config)
-        button.setTitle("프로필 편집", for: .normal)
+        var attributedTitle = AttributedString("프로필 편집")
+        attributedTitle.font = .systemFont(ofSize: 16, weight: .bold)
         
-//        let button = UIButton()
-//        button.setTitle("프로필 편집", for: .normal)
-//        button.backgroundColor = .gray
+        let paragraphTitle = NSMutableParagraphStyle()
+        config.attributedTitle = attributedTitle
+        
+        let button = UIButton(configuration: config)
         
         return button
     }()
     
+    // 프로필 공유 버튼
     private lazy var userShareButton: UIButton = {
         var config = UIButton.Configuration.filled()
         config.background.backgroundColor = .gray
         config.buttonSize = .small
         
+        var attributedTitle = AttributedString("프로필 공유")
+        attributedTitle.font = .systemFont(ofSize: 16, weight: .bold)
+        
+        let paragraphTitle = NSMutableParagraphStyle()
+        config.attributedTitle = attributedTitle
+        
         let button = UIButton(configuration: config)
-        button.setTitle("프로필 공유", for: .normal)
+        
         return button
     }()
-    
-//    private lazy var settingButton: UIButton = {
-//        var config = UIButton.Configuration.plain()
-//        config.imageColorTransformer = .grayscale
-//        config.image = UIImage(systemName: "gearshape")
-//        config.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration(pointSize: 20)
-//        config.imagePlacement = .leading
-//        config.baseBackgroundColor = .gray
+
     
     
     // 올린 게시물 수 만큼 보여주는 postLabel
@@ -161,7 +162,6 @@ class MyPageViewController: UIViewController, UICollectionViewDataSource, UIColl
         
         // 버튼의 스타일을 바꾸는 코드
         let button = UIButton(configuration: config)
-        
         button.addAction(UIAction { _ in
             print("설정 진입")
             
@@ -169,7 +169,6 @@ class MyPageViewController: UIViewController, UICollectionViewDataSource, UIColl
             
             self.navigationController?.pushViewController(viewController, animated: true)
         }, for: .touchUpInside)
-        
         return button
     }()
     
@@ -197,6 +196,7 @@ class MyPageViewController: UIViewController, UICollectionViewDataSource, UIColl
         title = "프로필"
         view.backgroundColor = .systemBackground
         
+        
         buildInterface()
     }
     
@@ -216,16 +216,18 @@ class MyPageViewController: UIViewController, UICollectionViewDataSource, UIColl
         imageHStackView.addArrangedSubview(heartLabel)
         imageHStackView.addArrangedSubview(comentLabel)
         
-        vStackView.addArrangedSubview(userImageSeparator)
+        
         vStackView.addArrangedSubview(NameHStackView)
         NameHStackView.addArrangedSubview(userNameLabel)
+        
         vStackView.addArrangedSubview(ButtonHStackView)
         ButtonHStackView.addArrangedSubview(userEditButton)
         ButtonHStackView.addArrangedSubview(userShareButton)
         
+        vStackView.addArrangedSubview(ButtonSeparator)
         vStackView.addArrangedSubview(collectionView)
-//        vStackView.addArrangedSubview(collectionVStackView)
-//        collectionVStackView.addArrangedSubview(collectionView)
+        //        vStackView.addArrangedSubview(collectionVStackView)
+        //        collectionVStackView.addArrangedSubview(collectionView)
     }
     
     // UI요소들의 레이아웃 제약조건을 설정하는 setupConstraints
@@ -233,17 +235,20 @@ class MyPageViewController: UIViewController, UICollectionViewDataSource, UIColl
         // view.safeAreaLayoutGuide을 담아내는 변수 safeGuide
         let safeGuide = view.safeAreaLayoutGuide
         
+        
         vStackView.translatesAutoresizingMaskIntoConstraints = false
         settingButton.translatesAutoresizingMaskIntoConstraints = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-//        collectionVStackView.translatesAutoresizingMaskIntoConstraints = false
         
         
         NSLayoutConstraint.activate([
-            vStackView.topAnchor.constraint(equalTo: safeGuide.topAnchor, constant: 45),
-            vStackView.leadingAnchor.constraint(equalTo: safeGuide.leadingAnchor, constant: 0),
-            vStackView.trailingAnchor.constraint(equalTo: safeGuide.trailingAnchor, constant: 0),
-            vStackView.bottomAnchor.constraint(equalTo: safeGuide.bottomAnchor, constant: -70),
+            vStackView.topAnchor.constraint(equalTo: safeGuide.topAnchor),
+            vStackView.leadingAnchor.constraint(equalTo: safeGuide.leadingAnchor),
+            vStackView.trailingAnchor.constraint(equalTo: safeGuide.trailingAnchor),
+            vStackView.bottomAnchor.constraint(equalTo: safeGuide.bottomAnchor, constant: -50),
+            
+            settingButton.trailingAnchor.constraint(equalTo: safeGuide.trailingAnchor, constant: -20),
+            settingButton.topAnchor.constraint(equalTo: safeGuide.topAnchor, constant: -20),
             
             imageHStackView.leadingAnchor.constraint(equalTo: safeGuide.leadingAnchor, constant: 10),
             imageHStackView.trailingAnchor.constraint(equalTo: safeGuide.trailingAnchor, constant: -60),
@@ -254,21 +259,25 @@ class MyPageViewController: UIViewController, UICollectionViewDataSource, UIColl
             collectionView.heightAnchor.constraint(equalToConstant: 395),
             collectionView.leadingAnchor.constraint(equalTo: vStackView.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: vStackView.trailingAnchor),
+            collectionView.centerXAnchor.constraint(equalTo: safeGuide.centerXAnchor),
             
-//            collectionVStackView.heightAnchor.constraint(equalToConstant: 390),
-//            collectionVStackView.leadingAnchor.constraint(equalTo: vStackView.leadingAnchor),
-//            collectionVStackView.trailingAnchor.constraint(equalTo: vStackView.trailingAnchor),
+            //            collectionVStackView.heightAnchor.constraint(equalToConstant: 390),
+            //            collectionVStackView.leadingAnchor.constraint(equalTo: vStackView.leadingAnchor),
+            //            collectionVStackView.trailingAnchor.constraint(equalTo: vStackView.trailingAnchor),
             
             
-            userImageSeparator.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            userImageSeparator.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            userImageSeparator.topAnchor.constraint(equalTo: userImageView.bottomAnchor, constant: 15),
-            userImageSeparator.heightAnchor.constraint(equalToConstant: 1),
+            ButtonSeparator.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            ButtonSeparator.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            ButtonSeparator.topAnchor.constraint(equalTo: ButtonHStackView.bottomAnchor, constant: 15),
+            ButtonSeparator.heightAnchor.constraint(equalToConstant: 1),
             
-            settingButton.widthAnchor.constraint(equalToConstant: 40),
-            settingButton.heightAnchor.constraint(equalToConstant: 40),
-            settingButton.trailingAnchor.constraint(equalTo: safeGuide.trailingAnchor, constant: -20),
-            settingButton.topAnchor.constraint(equalTo: safeGuide.topAnchor, constant: -20),
+            ButtonHStackView.topAnchor.constraint(equalTo: NameHStackView.topAnchor, constant: 50),
+            ButtonHStackView.centerXAnchor.constraint(equalTo: safeGuide.centerXAnchor),
+            
+//            settingButton.trailingAnchor.constraint(equalTo: safeGuide.trailingAnchor, constant: -20),
+//            settingButton.topAnchor.constraint(equalTo: safeGuide.topAnchor, constant: -15),
+            
+            
             
             
         ])

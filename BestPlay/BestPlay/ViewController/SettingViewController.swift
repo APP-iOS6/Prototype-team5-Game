@@ -43,8 +43,8 @@ class SettingViewController: UIViewController {
         
         button.addAction(UIAction { _ in
             
-            let alert = UIAlertController(title: "정말 로그아웃 하시겠습니까?",
-                                          message: "다시 로그인하면 됩니다.",
+            let alert = UIAlertController(title: "로그아웃 확인",
+                                          message: "정말로 로그아웃하시겠습니까? 로그아웃 시 현재 작업 중인 데이터가 저장되지 않을 수 있습니다.",
                                           preferredStyle: .alert)
             
             let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: { _ in
@@ -53,7 +53,13 @@ class SettingViewController: UIViewController {
             
             let logOutAction = UIAlertAction(title: "로그아웃", style: .destructive, handler: { _ in
                 print("로그아웃")
-                self.navigationController?.popViewController(animated: true)
+                
+                self.navigationController?.popToRootViewController(animated: true)
+                
+                // 위에 self.navigationControll?를 삭제하고 밑의 주석을 풀면 로그아웃 버튼을 누르면 loginViewController로 넘어간다
+//                if let loginViewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") {
+//                    self.navigationController?.setViewControllers([loginViewController], animated: true)
+//                }
                 
             })
             
