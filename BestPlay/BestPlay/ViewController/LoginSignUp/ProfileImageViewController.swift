@@ -8,6 +8,17 @@
 import UIKit
 
 class ProfileImageViewController: BaseSignUpViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    private lazy var descriptionLabel: UILabel = {
+        let label = UILabel()
+        label.text = "사용하실 이미지를 선택해주세요." // 설명 라벨 텍스트
+        label.font = UIFont(name: "Paperlogy 7 Bold", size: 18) // 원하는 폰트와 크기 설정
+        label.textColor = UIColor.systemGray // 글씨색 회색으로 설정
+        label.numberOfLines = 1 // 여러 줄 텍스트 허용
+        label.textAlignment = .left // 텍스트 가운데 정렬
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
 
     private lazy var profileImageView: UIImageView = {
         let imageView = UIImageView()
@@ -33,10 +44,15 @@ class ProfileImageViewController: BaseSignUpViewController, UIImagePickerControl
     }
 
     private func setupProfileImageView() {
+        view.addSubview(descriptionLabel)
         view.addSubview(profileImageView)
 
         NSLayoutConstraint.activate([
-            profileImageView.topAnchor.constraint(equalTo: progressView.bottomAnchor, constant: 40),
+            descriptionLabel.topAnchor.constraint(equalTo: progressView.bottomAnchor, constant: 40),
+            descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            descriptionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            
+            profileImageView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 40),
             profileImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
         
