@@ -50,7 +50,12 @@ class FavoriteGameViewController: UIViewController, UIPickerViewDataSource, UIPi
         let button = UIButton(type: .system)
         button.setTitle("건너뛰기", for: .normal) // 건너뛰기 버튼
         button.setTitleColor(.systemBlue, for: .normal)
-        button.addTarget(self, action: #selector(handleSkip), for: .touchUpInside)
+        button.addAction(UIAction { _ in
+            //재민님 탭바로 가야함
+            let tabBarViewController = MainTabBarViewController()
+            tabBarViewController.modalPresentationStyle = .fullScreen
+            self.present(tabBarViewController, animated: true)
+        }, for: .touchUpInside)
         return button
     }()
     
