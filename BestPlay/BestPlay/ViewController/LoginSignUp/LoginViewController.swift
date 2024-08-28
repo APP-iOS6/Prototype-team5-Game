@@ -118,6 +118,7 @@ class LoginViewController: BaseViewController {
         button.backgroundColor = .systemGreen
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 10
+        button.tintColor = .white
         return button
     }()
     
