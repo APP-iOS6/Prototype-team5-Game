@@ -10,6 +10,8 @@ import UIKit
 class SignUpViewController: UIViewController {
     
     // UI 요소들 정의
+    
+    // 아이디 입력 텍스트 필드
     private lazy var idTextField: PaddedTextField = {
         let textField = PaddedTextField()
         textField.placeholder = "아이디" // 아이디 입력 필드
@@ -22,6 +24,7 @@ class SignUpViewController: UIViewController {
         return textField
     }()
     
+    // 비밀번호 입력 텍스트 필드
     private lazy var passwordTextField: PaddedTextField = {
         let textField = PaddedTextField()
         textField.placeholder = "비밀번호" // 비밀번호 입력 필드
@@ -30,11 +33,11 @@ class SignUpViewController: UIViewController {
         textField.layer.borderWidth = 1
         textField.layer.cornerRadius = 10
         textField.layer.borderColor = UIColor.systemGray3.cgColor
-        
         textField.isUserInteractionEnabled = true
         return textField
     }()
     
+    // 비밀번호 확인 입력 텍스트 필드
     private lazy var confirmPasswordTextField: PaddedTextField = {
         let textField = PaddedTextField()
         textField.placeholder = "비밀번호 확인" // 비밀번호 확인 입력 필드
@@ -47,6 +50,7 @@ class SignUpViewController: UIViewController {
         return textField
     }()
     
+    // 닉네임 입력 텍스트 필드
     private lazy var nicknameTextField: PaddedTextField = {
         let textField = PaddedTextField()
         textField.placeholder = "닉네임" // 닉네임 입력 필드
@@ -58,6 +62,7 @@ class SignUpViewController: UIViewController {
         return textField
     }()
     
+    // 생일 입력 텍스트 필드
     private lazy var birthdayTextField: PaddedTextField = {
         let textField = PaddedTextField()
         textField.placeholder = "생일 (YYYY-MM-DD)" // 생일 입력 필드
@@ -69,6 +74,7 @@ class SignUpViewController: UIViewController {
         return textField
     }()
     
+    // 프로필 이미지 뷰
     private lazy var profileImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
@@ -82,6 +88,7 @@ class SignUpViewController: UIViewController {
         return imageView
     }()
     
+    // 다음 버튼
     private lazy var nextButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("다음", for: .normal) // 다음 버튼
@@ -89,16 +96,17 @@ class SignUpViewController: UIViewController {
         button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         button.backgroundColor = .systemBlue
         button.layer.cornerRadius = 10
+        // 다음 버튼 클릭 시 액션 설정
         button.addTarget(self, action: #selector(handleNext), for: .touchUpInside)
         return button
     }()
     
+    // UI 요소들을 담은 스택뷰 정의
     private lazy var stackView: UIStackView = {
         // 스택뷰에 UI 요소들을 세로로 배치
         let stackView = UIStackView(arrangedSubviews: [profileImageView, idTextField, passwordTextField, confirmPasswordTextField, nicknameTextField, birthdayTextField, nextButton])
         stackView.axis = .vertical
         stackView.spacing = 30
-//        stackView.alignment = .fill
         stackView.distribution = .equalSpacing
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
@@ -114,10 +122,12 @@ class SignUpViewController: UIViewController {
     
     // UI 요소들을 뷰에 추가하고 레이아웃 설정
     private func setupInterface() {
+        // 스택뷰를 뷰에 추가
         view.addSubview(stackView)
         
         // 오토레이아웃 설정
         NSLayoutConstraint.activate([
+            // 스택뷰 레이아웃 설정
             stackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             stackView.bottomAnchor.constraint(equalTo: view.keyboardLayoutGuide.topAnchor, constant: -50),
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
@@ -132,7 +142,8 @@ class SignUpViewController: UIViewController {
     // 다음 버튼 액션
     @objc private func handleNext() {
         let favoriteGameVC = FavoriteGameViewController()
-        navigationController?.pushViewController(favoriteGameVC, animated: true) // 관심 게임 설정 화면으로 이동
+        // 관심 게임 설정 화면으로 이동
+        navigationController?.pushViewController(favoriteGameVC, animated: true)
     }
 }
 
