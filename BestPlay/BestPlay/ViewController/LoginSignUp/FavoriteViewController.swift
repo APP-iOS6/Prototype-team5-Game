@@ -74,7 +74,7 @@ class FavoriteGameViewController: UIViewController, UIPickerViewDataSource, UIPi
         button.layer.cornerRadius = 10
         // 다음 버튼 클릭 시 탭바로 이동하는 액션 설정
         button.addAction(UIAction { _ in
-            let tabBarViewController = MainTabBarViewController()
+            let tabBarViewController = MainTabBarViewController.shared
             tabBarViewController.modalPresentationStyle = .fullScreen
             self.present(tabBarViewController, animated: true)
         }, for: .touchUpInside)
