@@ -84,7 +84,7 @@ class LoginViewController: BaseViewController {
         button.backgroundColor = .systemBlue
         // 로그인 버튼이 눌렸을 때 실행되는 액션 설정
         button.addAction(UIAction { _ in
-            let tabBarViewController = MainTabBarViewController()
+            let tabBarViewController = MainTabBarViewController.shared
             tabBarViewController.modalPresentationStyle = .fullScreen
             self.present(tabBarViewController, animated: true)
         }, for: .touchUpInside)
@@ -118,6 +118,11 @@ class LoginViewController: BaseViewController {
         button.backgroundColor = .systemGreen
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 10
+        button.addAction(UIAction { _ in
+            let tabBarViewController = MainTabBarViewController.shared
+            tabBarViewController.modalPresentationStyle = .fullScreen
+            self.present(tabBarViewController, animated: true)
+        }, for: .touchUpInside)
         button.tintColor = .white
         return button
     }()
@@ -130,6 +135,11 @@ class LoginViewController: BaseViewController {
         button.backgroundColor = .yellow
         button.setTitleColor(.black, for: .normal)
         button.layer.cornerRadius = 10
+        button.addAction(UIAction { _ in
+            let tabBarViewController = MainTabBarViewController.shared
+            tabBarViewController.modalPresentationStyle = .fullScreen
+            self.present(tabBarViewController, animated: true)
+        }, for: .touchUpInside)
         return button
     }()
     
@@ -143,6 +153,11 @@ class LoginViewController: BaseViewController {
         button.layer.cornerRadius = 10
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor.lightGray.cgColor
+        button.addAction(UIAction { _ in
+            let tabBarViewController = MainTabBarViewController.shared
+            tabBarViewController.modalPresentationStyle = .fullScreen
+            self.present(tabBarViewController, animated: true)
+        }, for: .touchUpInside)
         return button
     }()
 

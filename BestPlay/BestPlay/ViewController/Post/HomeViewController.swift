@@ -183,8 +183,14 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 }
 
 
-
+//옵션 버튼 및 더미 데이터 추가하는 extension
 extension HomeViewController {
+    
+    //포스팅에서 업로드 누를 시 실행되는 함수
+    func addDummyData() {
+        self.viewModel.addDummyData()
+    }
+
     
     // 옵션 버튼을 눌렀을 때 액션시트 나타나게 하는 함수
     func showActionSheet() {

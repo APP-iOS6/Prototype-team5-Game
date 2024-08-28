@@ -9,6 +9,7 @@ import UIKit
 
 final class CommunityUploadViewController: BaseVerticalStackViewController, UITextViewDelegate {
     
+    
     private lazy var topItemStackView: UIStackView = {
         let view = UIStackView()
         view.axis = .vertical
@@ -67,11 +68,14 @@ final class CommunityUploadViewController: BaseVerticalStackViewController, UITe
         
         view.configuration = config
         view.addAction(UIAction { _ in
-            print("upload select!")
+            MainTabBarViewController.shared.selectedIndex = 0
+            MainTabBarViewController.shared.home.addDummyData()
         }, for: .touchUpInside)
         
         return view
     }()
+    
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
