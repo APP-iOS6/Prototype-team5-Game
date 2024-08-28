@@ -11,11 +11,12 @@ class ProfileImageViewController: BaseSignUpViewController, UIImagePickerControl
 
     private lazy var profileImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill // 이미지가 동그랗게 표시되도록 설정
         imageView.image = UIImage(systemName: "person.circle")
         imageView.tintColor = .gray
         imageView.layer.cornerRadius = 50
         imageView.clipsToBounds = true
+        imageView.layer.masksToBounds = true // 이미지가 이미지뷰의 경계를 넘어가지 않도록 설정
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         imageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
@@ -24,7 +25,7 @@ class ProfileImageViewController: BaseSignUpViewController, UIImagePickerControl
         imageView.addGestureRecognizer(tapGesture)
         return imageView
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         progressValue = 1.0
