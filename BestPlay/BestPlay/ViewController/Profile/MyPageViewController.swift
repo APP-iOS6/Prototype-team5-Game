@@ -245,7 +245,7 @@ class MyPageViewController: UIViewController, UICollectionViewDataSource, UIColl
             vStackView.topAnchor.constraint(equalTo: safeGuide.topAnchor),
             vStackView.leadingAnchor.constraint(equalTo: safeGuide.leadingAnchor),
             vStackView.trailingAnchor.constraint(equalTo: safeGuide.trailingAnchor),
-            vStackView.bottomAnchor.constraint(equalTo: safeGuide.bottomAnchor, constant: -50),
+            vStackView.bottomAnchor.constraint(equalTo: safeGuide.bottomAnchor, constant: -20),
             
             settingButton.trailingAnchor.constraint(equalTo: safeGuide.trailingAnchor, constant: -20),
             settingButton.topAnchor.constraint(equalTo: safeGuide.topAnchor, constant: -20),

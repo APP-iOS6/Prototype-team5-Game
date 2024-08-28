@@ -54,7 +54,9 @@ class SettingViewController: UIViewController {
             let logOutAction = UIAlertAction(title: "로그아웃", style: .destructive, handler: { _ in
                 print("로그아웃")
                 
-                self.navigationController?.popToRootViewController(animated: true)
+                let login = LoginViewController()
+                login.modalPresentationStyle = .fullScreen
+                self.present(login, animated: true)
                 
                 // 위에 self.navigationControll?를 삭제하고 밑의 주석을 풀면 로그아웃 버튼을 누르면 loginViewController로 넘어간다
 //                if let loginViewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") {
