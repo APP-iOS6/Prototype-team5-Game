@@ -11,18 +11,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        let myPageViewController = MyPageViewController()
-        let myPageNavigationController = UINavigationController(rootViewController: myPageViewController)
-        
+        let loginVC = LoginViewController()
+        let navigationController = UINavigationController(rootViewController: loginVC)
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = myPageNavigationController // myPageNavigationController를 LoginViewController로 바꾸면 됨
+        window?.rootViewController = navigationController
+
         window?.makeKeyAndVisible()
-        
         
         
     }
