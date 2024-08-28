@@ -44,16 +44,6 @@ class MyPageViewController: UIViewController, UICollectionViewDataSource, UIColl
         return stackView
     }()
     
-    
-    
-    // collectionView의 위치를 잡아주는 collectionVStackView
-    //    private lazy var collectionVStackView: UIStackView = {
-    //        let stackView = UIStackView()
-    //        stackView.axis = .vertical
-    //        stackView.spacing = 30
-    //        return stackView
-    //    }()
-    
     // userImage랑 userName 사이의 구분선
     private lazy var ButtonSeparator: UIView = {
         let uIView = UIView()
@@ -226,8 +216,6 @@ class MyPageViewController: UIViewController, UICollectionViewDataSource, UIColl
         
         vStackView.addArrangedSubview(ButtonSeparator)
         vStackView.addArrangedSubview(collectionView)
-        //        vStackView.addArrangedSubview(collectionVStackView)
-        //        collectionVStackView.addArrangedSubview(collectionView)
     }
     
     // UI요소들의 레이아웃 제약조건을 설정하는 setupConstraints
@@ -245,7 +233,7 @@ class MyPageViewController: UIViewController, UICollectionViewDataSource, UIColl
             vStackView.topAnchor.constraint(equalTo: safeGuide.topAnchor),
             vStackView.leadingAnchor.constraint(equalTo: safeGuide.leadingAnchor),
             vStackView.trailingAnchor.constraint(equalTo: safeGuide.trailingAnchor),
-            vStackView.bottomAnchor.constraint(equalTo: safeGuide.bottomAnchor, constant: -50),
+            vStackView.bottomAnchor.constraint(equalTo: safeGuide.bottomAnchor, constant: -70),
             
             settingButton.trailingAnchor.constraint(equalTo: safeGuide.trailingAnchor, constant: -20),
             settingButton.topAnchor.constraint(equalTo: safeGuide.topAnchor, constant: -20),
@@ -261,11 +249,6 @@ class MyPageViewController: UIViewController, UICollectionViewDataSource, UIColl
             collectionView.trailingAnchor.constraint(equalTo: vStackView.trailingAnchor),
             collectionView.centerXAnchor.constraint(equalTo: safeGuide.centerXAnchor),
             
-            //            collectionVStackView.heightAnchor.constraint(equalToConstant: 390),
-            //            collectionVStackView.leadingAnchor.constraint(equalTo: vStackView.leadingAnchor),
-            //            collectionVStackView.trailingAnchor.constraint(equalTo: vStackView.trailingAnchor),
-            
-            
             ButtonSeparator.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             ButtonSeparator.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             ButtonSeparator.topAnchor.constraint(equalTo: ButtonHStackView.bottomAnchor, constant: 15),
@@ -273,13 +256,6 @@ class MyPageViewController: UIViewController, UICollectionViewDataSource, UIColl
             
             ButtonHStackView.topAnchor.constraint(equalTo: NameHStackView.topAnchor, constant: 50),
             ButtonHStackView.centerXAnchor.constraint(equalTo: safeGuide.centerXAnchor),
-            
-//            settingButton.trailingAnchor.constraint(equalTo: safeGuide.trailingAnchor, constant: -20),
-//            settingButton.topAnchor.constraint(equalTo: safeGuide.topAnchor, constant: -15),
-            
-            
-            
-            
         ])
     }
     
