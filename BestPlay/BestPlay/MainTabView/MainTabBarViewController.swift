@@ -10,7 +10,9 @@ import UIKit
 
 class MainTabBarViewController: UITabBarController, UITabBarControllerDelegate {
     
-    private lazy var home: BaseViewController = {
+    static let shared: MainTabBarViewController = MainTabBarViewController()
+    
+    private(set) lazy var home: HomeViewController = {
         let vc = HomeViewController()
         vc.tabBarItem =  UITabBarItem(title: "홈", image: UIImage(systemName: "house.fill"), tag: 0)
         return vc
