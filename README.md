@@ -1,3 +1,5 @@
+![Untitled-1](https://github.com/user-attachments/assets/89a7a883-d756-4915-9bbd-98f6e55bc70d)
+
 # 최고의 플레이
 #### 자신의 게임 플레이와 정보를 기록 및 공유하여 자랑하고 정보 교환을 할 수 있는 앱
 <br>
