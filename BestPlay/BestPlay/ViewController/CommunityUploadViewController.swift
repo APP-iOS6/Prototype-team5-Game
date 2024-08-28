@@ -103,7 +103,6 @@ final class CommunityUploadViewController: BaseVerticalStackViewController, UITe
             contentSelectButton.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -20),
             
             textEditView.widthAnchor.constraint(equalTo: verticalStackView.widthAnchor),
-            textEditView.bottomAnchor.constraint(equalTo: view.keyboardLayoutGuide.topAnchor)
         ])
     }
     

@@ -30,10 +30,9 @@ class BaseVerticalStackViewController: BaseViewController {
         view.addSubview(verticalStackView)
         
         NSLayoutConstraint.activate([
-            verticalStackView.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor),
-            verticalStackView.centerYAnchor.constraint(equalTo: safeArea.centerYAnchor),
+            verticalStackView.topAnchor.constraint(equalTo: safeArea.topAnchor),
+            verticalStackView.bottomAnchor.constraint(equalTo: view.keyboardLayoutGuide.topAnchor),
             verticalStackView.widthAnchor.constraint(equalTo: safeArea.widthAnchor),
-            verticalStackView.heightAnchor.constraint(equalTo: safeArea.heightAnchor)
         ])
     }
 }
