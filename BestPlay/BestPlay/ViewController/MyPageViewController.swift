@@ -35,11 +35,19 @@ class MyPageViewController: UIViewController, UICollectionViewDataSource, UIColl
         return stackView
     }()
     
+    // userImage랑 userName 사이의 구분선
+    private lazy var userControlSeparator: UIView = {
+        let uIView = UIView()
+        uIView.backgroundColor = UIColor(red: 80/255, green: 90/255, blue: 55/255, alpha: 1.0)
+        uIView.translatesAutoresizingMaskIntoConstraints = false
+        return uIView
+    }()
+    
     // userName을 보여주는 Label
     private lazy var userNameLabel: UILabel = {
         let label = UILabel()
         label.text = "청개구리"
-        label.font = .systemFont(ofSize: 25)
+        label.font = .systemFont(ofSize: 20)
         label.lineBreakMode = .byTruncatingTail
         label.textAlignment = .center
         return label
@@ -56,6 +64,16 @@ class MyPageViewController: UIViewController, UICollectionViewDataSource, UIColl
         imageView.layer.masksToBounds = true
         return imageView
     }()
+    
+//    // 프로필 편집 버튼
+//    private lazy var userEditButton: UIButton = {
+//        let button = UIButton()
+//        button.setTitle("프로필 편집", for: .normal)
+//        button.backgroundColor = .gray
+//        return button
+//    }()
+    
+    
     
     // 올린 게시물 수 만큼 보여주는 postLabel
     private lazy var postLabel: UILabel = {
@@ -90,9 +108,12 @@ class MyPageViewController: UIViewController, UICollectionViewDataSource, UIColl
     // 설정 페이지로 들어가는 Button
     private lazy var settingButton: UIButton = {
         var config = UIButton.Configuration.plain()
+        config.imageColorTransformer = .grayscale
         config.image = UIImage(systemName: "gearshape")
         config.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration(pointSize: 20)
         config.imagePlacement = .leading
+        config.baseBackgroundColor = .gray
+        
         
         // 버튼의 스타일을 바꾸는 코드
         let button = UIButton(configuration: config)
@@ -151,7 +172,9 @@ class MyPageViewController: UIViewController, UICollectionViewDataSource, UIColl
         hStackView.addArrangedSubview(heartLabel)
         hStackView.addArrangedSubview(comentLabel)
         
+        vStackView.addArrangedSubview(userControlSeparator)
         vStackView.addArrangedSubview(userNameLabel)
+//        vStackView.addArrangedSubview(userEditButton)
         vStackView.addArrangedSubview(collectionVStackView)
         collectionVStackView.addArrangedSubview(collectionView)
     }
@@ -169,21 +192,35 @@ class MyPageViewController: UIViewController, UICollectionViewDataSource, UIColl
         
         NSLayoutConstraint.activate([
             vStackView.topAnchor.constraint(equalTo: safeGuide.topAnchor, constant: 45),
-            vStackView.leadingAnchor.constraint(equalTo: safeGuide.leadingAnchor, constant: 20),
-            vStackView.trailingAnchor.constraint(equalTo: safeGuide.trailingAnchor, constant: -20),
+            vStackView.leadingAnchor.constraint(equalTo: safeGuide.leadingAnchor, constant: 0),
+            vStackView.trailingAnchor.constraint(equalTo: safeGuide.trailingAnchor, constant: 0),
+            
+            hStackView.leadingAnchor.constraint(equalTo: safeGuide.leadingAnchor, constant: 10),
+            hStackView.trailingAnchor.constraint(equalTo: safeGuide.trailingAnchor, constant: -30),
             
             userImageView.widthAnchor.constraint(equalToConstant: 90),
             userImageView.heightAnchor.constraint(equalToConstant: 90),
             
-            collectionView.heightAnchor.constraint(equalToConstant: 400),
+            collectionView.heightAnchor.constraint(equalToConstant: 395),
+            collectionView.leadingAnchor.constraint(equalTo: vStackView.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: vStackView.trailingAnchor),
+            
+//            collectionVStackView.heightAnchor.constraint(equalToConstant: 390),
+//            collectionVStackView.leadingAnchor.constraint(equalTo: vStackView.leadingAnchor),
+//            collectionVStackView.trailingAnchor.constraint(equalTo: vStackView.trailingAnchor),
+            
+            
+            userControlSeparator.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            userControlSeparator.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            userControlSeparator.topAnchor.constraint(equalTo: userImageView.bottomAnchor, constant: 15),
+            userControlSeparator.heightAnchor.constraint(equalToConstant: 1),
             
             settingButton.widthAnchor.constraint(equalToConstant: 40),
             settingButton.heightAnchor.constraint(equalToConstant: 40),
             settingButton.trailingAnchor.constraint(equalTo: safeGuide.trailingAnchor, constant: -20),
             settingButton.topAnchor.constraint(equalTo: safeGuide.topAnchor, constant: -20),
             
-            collectionView.leadingAnchor.constraint(equalTo: vStackView.leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: vStackView.trailingAnchor),
+            
         ])
     }
     
@@ -199,7 +236,7 @@ class MyPageViewController: UIViewController, UICollectionViewDataSource, UIColl
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
         let imageView = UIImageView(frame: cell.contentView.bounds)
         imageView.contentMode = .scaleAspectFill
-        imageView.layer.cornerRadius = 6
+        //        imageView.layer.cornerRadius = 6
         imageView.layer.masksToBounds = true
         imageView.image = UIImage(named: imageNames[indexPath.item])
         
