@@ -19,34 +19,53 @@ class MyPageViewController: UIViewController, UICollectionViewDataSource, UIColl
         return stackView
     }()
     
-    // userImageView, postLabel, heartLabel, comentLabel이 들어갈 hStackView
-    private lazy var hStackView: UIStackView = {
+    // userImageView, postLabel, heartLabel, comentLabel이 들어갈 imageHStackView
+    private lazy var imageHStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.spacing = 30
         return stackView
     }()
     
-    // collectionView의 위치를 잡아주는 collectionVStackView
-    private lazy var collectionVStackView: UIStackView = {
+    // 프로필 편집, 프로필 공유의 버튼이 들어갈 ButtonHStackView
+    private lazy var ButtonHStackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.axis = .vertical
+        stackView.axis = .horizontal
+        stackView.spacing = 20
+        
+        stackView.distribution = .fillEqually
+        return stackView
+    }()
+    
+    private lazy var NameHStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
         stackView.spacing = 30
         return stackView
     }()
     
+    
+    
+    // collectionView의 위치를 잡아주는 collectionVStackView
+//    private lazy var collectionVStackView: UIStackView = {
+//        let stackView = UIStackView()
+//        stackView.axis = .vertical
+//        stackView.spacing = 30
+//        return stackView
+//    }()
+    
     // userImage랑 userName 사이의 구분선
-    private lazy var userControlSeparator: UIView = {
+    private lazy var userImageSeparator: UIView = {
         let uIView = UIView()
-        uIView.backgroundColor = UIColor(red: 80/255, green: 90/255, blue: 55/255, alpha: 1.0)
-        uIView.translatesAutoresizingMaskIntoConstraints = false
+        uIView.backgroundColor = UIColor.black
+        
         return uIView
     }()
     
     // userName을 보여주는 Label
     private lazy var userNameLabel: UILabel = {
         let label = UILabel()
-        label.text = "청개구리"
+        label.text = "학살 이정민"
         label.font = .systemFont(ofSize: 20)
         label.lineBreakMode = .byTruncatingTail
         label.textAlignment = .center
@@ -65,14 +84,39 @@ class MyPageViewController: UIViewController, UICollectionViewDataSource, UIColl
         return imageView
     }()
     
-//    // 프로필 편집 버튼
-//    private lazy var userEditButton: UIButton = {
+    // 프로필 편집 버튼
+    private lazy var userEditButton: UIButton = {
+        var config = UIButton.Configuration.filled()
+        config.background.backgroundColor = .gray
+        config.buttonSize = .small
+        
+        let button = UIButton(configuration: config)
+        button.setTitle("프로필 편집", for: .normal)
+        
 //        let button = UIButton()
 //        button.setTitle("프로필 편집", for: .normal)
 //        button.backgroundColor = .gray
-//        return button
-//    }()
+        
+        return button
+    }()
     
+    private lazy var userShareButton: UIButton = {
+        var config = UIButton.Configuration.filled()
+        config.background.backgroundColor = .gray
+        config.buttonSize = .small
+        
+        let button = UIButton(configuration: config)
+        button.setTitle("프로필 공유", for: .normal)
+        return button
+    }()
+    
+//    private lazy var settingButton: UIButton = {
+//        var config = UIButton.Configuration.plain()
+//        config.imageColorTransformer = .grayscale
+//        config.image = UIImage(systemName: "gearshape")
+//        config.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration(pointSize: 20)
+//        config.imagePlacement = .leading
+//        config.baseBackgroundColor = .gray
     
     
     // 올린 게시물 수 만큼 보여주는 postLabel
@@ -166,17 +210,22 @@ class MyPageViewController: UIViewController, UICollectionViewDataSource, UIColl
         view.addSubview(vStackView)
         view.addSubview(settingButton)
         
-        vStackView.addArrangedSubview(hStackView)
-        hStackView.addArrangedSubview(userImageView)
-        hStackView.addArrangedSubview(postLabel)
-        hStackView.addArrangedSubview(heartLabel)
-        hStackView.addArrangedSubview(comentLabel)
+        vStackView.addArrangedSubview(imageHStackView)
+        imageHStackView.addArrangedSubview(userImageView)
+        imageHStackView.addArrangedSubview(postLabel)
+        imageHStackView.addArrangedSubview(heartLabel)
+        imageHStackView.addArrangedSubview(comentLabel)
         
-        vStackView.addArrangedSubview(userControlSeparator)
-        vStackView.addArrangedSubview(userNameLabel)
-//        vStackView.addArrangedSubview(userEditButton)
-        vStackView.addArrangedSubview(collectionVStackView)
-        collectionVStackView.addArrangedSubview(collectionView)
+        vStackView.addArrangedSubview(userImageSeparator)
+        vStackView.addArrangedSubview(NameHStackView)
+        NameHStackView.addArrangedSubview(userNameLabel)
+        vStackView.addArrangedSubview(ButtonHStackView)
+        ButtonHStackView.addArrangedSubview(userEditButton)
+        ButtonHStackView.addArrangedSubview(userShareButton)
+        
+        vStackView.addArrangedSubview(collectionView)
+//        vStackView.addArrangedSubview(collectionVStackView)
+//        collectionVStackView.addArrangedSubview(collectionView)
     }
     
     // UI요소들의 레이아웃 제약조건을 설정하는 setupConstraints
@@ -187,16 +236,17 @@ class MyPageViewController: UIViewController, UICollectionViewDataSource, UIColl
         vStackView.translatesAutoresizingMaskIntoConstraints = false
         settingButton.translatesAutoresizingMaskIntoConstraints = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionVStackView.translatesAutoresizingMaskIntoConstraints = false
+//        collectionVStackView.translatesAutoresizingMaskIntoConstraints = false
         
         
         NSLayoutConstraint.activate([
             vStackView.topAnchor.constraint(equalTo: safeGuide.topAnchor, constant: 45),
             vStackView.leadingAnchor.constraint(equalTo: safeGuide.leadingAnchor, constant: 0),
             vStackView.trailingAnchor.constraint(equalTo: safeGuide.trailingAnchor, constant: 0),
+            vStackView.bottomAnchor.constraint(equalTo: safeGuide.bottomAnchor, constant: -70),
             
-            hStackView.leadingAnchor.constraint(equalTo: safeGuide.leadingAnchor, constant: 10),
-            hStackView.trailingAnchor.constraint(equalTo: safeGuide.trailingAnchor, constant: -30),
+            imageHStackView.leadingAnchor.constraint(equalTo: safeGuide.leadingAnchor, constant: 10),
+            imageHStackView.trailingAnchor.constraint(equalTo: safeGuide.trailingAnchor, constant: -60),
             
             userImageView.widthAnchor.constraint(equalToConstant: 90),
             userImageView.heightAnchor.constraint(equalToConstant: 90),
@@ -210,10 +260,10 @@ class MyPageViewController: UIViewController, UICollectionViewDataSource, UIColl
 //            collectionVStackView.trailingAnchor.constraint(equalTo: vStackView.trailingAnchor),
             
             
-            userControlSeparator.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            userControlSeparator.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            userControlSeparator.topAnchor.constraint(equalTo: userImageView.bottomAnchor, constant: 15),
-            userControlSeparator.heightAnchor.constraint(equalToConstant: 1),
+            userImageSeparator.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            userImageSeparator.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            userImageSeparator.topAnchor.constraint(equalTo: userImageView.bottomAnchor, constant: 15),
+            userImageSeparator.heightAnchor.constraint(equalToConstant: 1),
             
             settingButton.widthAnchor.constraint(equalToConstant: 40),
             settingButton.heightAnchor.constraint(equalToConstant: 40),
