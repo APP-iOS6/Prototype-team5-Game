@@ -31,7 +31,7 @@ class LoginViewController: BaseViewController {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "최고의 플레이"
-        label.font = UIFont.boldSystemFont(ofSize: 34)
+        label.font = UIFont(name: "Paperlogy 7 Bold", size: 40)
         label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -114,6 +114,15 @@ class LoginViewController: BaseViewController {
         button.backgroundColor = .systemGreen
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 10
+        
+        for family in UIFont.familyNames {
+            print("Family: \(family)")
+            
+            for name in UIFont.fontNames(forFamilyName: family) {
+                print("Font Name: \(name)")
+            }
+        }
+ 
         return button
     }()
     
