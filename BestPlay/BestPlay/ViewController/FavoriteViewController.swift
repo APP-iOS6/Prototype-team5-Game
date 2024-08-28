@@ -60,7 +60,12 @@ class FavoriteGameViewController: UIViewController, UIPickerViewDataSource, UIPi
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .systemBlue
         button.layer.cornerRadius = 10
-        button.addTarget(self, action: #selector(handleNext), for: .touchUpInside)
+        button.addAction(UIAction { _ in
+            //재민님 탭바로 가야함
+            let tabBarViewController = MainTabBarViewController()
+            tabBarViewController.modalPresentationStyle = .fullScreen
+            self.present(tabBarViewController, animated: true)
+        }, for: .touchUpInside)
         return button
     }()
     
