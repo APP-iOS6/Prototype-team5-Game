@@ -90,6 +90,13 @@ class FavoriteGameViewController: UIViewController, UIPickerViewDataSource, UIPi
         view.backgroundColor = .systemBackground
         title = "관심 게임 설정"
         setupInterface() // UI 설정
+        
+        // 초기 선택값 설정
+        if let firstGenre = model.genres.first {
+            selectedGenre = firstGenre
+            genrePicker.selectRow(0, inComponent: 0, animated: false)
+            gameNamePicker.reloadAllComponents()
+        }
     }
     
     // UI 요소들을 뷰에 추가하고 레이아웃 설정
