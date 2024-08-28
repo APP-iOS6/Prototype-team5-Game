@@ -96,7 +96,10 @@ class LoginViewController: BaseViewController {
         let button = UIButton(type: .system)
         button.setTitle("회원가입", for: .normal)
         // 회원가입 버튼이 눌렸을 때 실행되는 액션 설정
-        button.addTarget(self, action: #selector(handleSignUp), for: .touchUpInside)
+        button.addAction(UIAction { [weak self] _ in
+            let idVC = IDViewController()
+            self?.navigationController?.pushViewController(idVC, animated: true)
+        }, for: .touchUpInside)
         return button
     }()
     
@@ -179,12 +182,6 @@ class LoginViewController: BaseViewController {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
-    
-    // 회원가입 화면으로 이동하는 액션 처리
-    @objc private func handleSignUp() {
-        let signUpVC = SignUpViewController()
-        navigationController?.pushViewController(signUpVC, animated: true)
-    }
     
     // 뷰가 로드될 때 호출되는 메서드
     override func viewDidLoad() {
