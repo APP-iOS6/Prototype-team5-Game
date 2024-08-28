@@ -33,6 +33,6 @@ class BaseVerticalStackViewController: BaseViewController {
             verticalStackView.topAnchor.constraint(equalTo: safeArea.topAnchor),
             verticalStackView.bottomAnchor.constraint(equalTo: view.keyboardLayoutGuide.topAnchor),
             verticalStackView.widthAnchor.constraint(equalTo: safeArea.widthAnchor),
-        ])
+        ]) // 높이는 동적으로 설정됨
     }
 }

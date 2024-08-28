@@ -111,7 +111,7 @@ final class CommunityUploadViewController: BaseVerticalStackViewController, UITe
             textView.text = nil
             textView.textColor = .black
         }
-    }
+    } // 텍스트 뷰를 누르면 호출, 텍스트의 place holder를 지우고 글을 입력받을 준비를 한다
     
     func textViewDidEndEditing(_ textView: UITextView) {
         let trimResult = textView.text.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -120,7 +120,7 @@ final class CommunityUploadViewController: BaseVerticalStackViewController, UITe
             textView.text = textViewPlaceHolder
             textView.textColor = .lightGray
         }
-    }
+    } // 텍스트 뷰에서 벗어나면(다른 곳을 터치하는 등) 호출, 텍스트의 place holder가 비어있다면 정해진 place holder를 텍스트 뷰의 text로 넣는다.
 }
 
 #Preview() {
