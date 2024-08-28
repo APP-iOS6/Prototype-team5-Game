@@ -23,6 +23,11 @@ class HomeViewController: BaseViewController {
         return stack
     }()
     
+    private lazy var topBarHStack: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .horizontal
+        return stack
+    }()
     //타이틀 라벨
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -31,12 +36,21 @@ class HomeViewController: BaseViewController {
         return label
     }()
     
+    private lazy var searchIcon: UIButton = {
+        let btn = UIButton()
+        btn.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
+        btn.tintColor = .black
+        return btn
+    }()
+    
     //장르를 선택할 수 있는 탭
     private lazy var genreTab: UIView = {
         //GenreTabBar를 호출하고 선택된 장르를 클로저로 받음
         let tab = GenreTabBar { genre in
             //장르가 바뀌었을 때
-            self.viewModel.updateSelectedGenre(genre)
+            if genre != .filter {
+                self.viewModel.updateSelectedGenre(genre)
+            }
         }
         return tab.view
     }()
@@ -46,9 +60,10 @@ class HomeViewController: BaseViewController {
     private lazy var postCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical //세로 스크롤
-        layout.minimumLineSpacing = 30 //포스트 간격
+        layout.minimumLineSpacing = 15 //포스트 간격
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .gray
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(PostCollectionViewCell.self, forCellWithReuseIdentifier: PostCollectionViewCell.identifier)
@@ -73,7 +88,10 @@ class HomeViewController: BaseViewController {
     //인터페이스 설정
     override func setupInterface() {
         view.addSubview(mainVStack)
-        mainVStack.addArrangedSubview(titleLabel)
+        topBarHStack.addArrangedSubview(titleLabel)
+        topBarHStack.addArrangedSubview(searchIcon)
+        
+        mainVStack.addArrangedSubview(topBarHStack)
         mainVStack.addArrangedSubview(genreTab)
         mainVStack.addArrangedSubview(postCollectionView)
         let safeGuide = view.safeAreaLayoutGuide
@@ -85,9 +103,17 @@ class HomeViewController: BaseViewController {
             mainVStack.trailingAnchor.constraint(equalTo: safeGuide.trailingAnchor),
             mainVStack.bottomAnchor.constraint(equalTo: safeGuide.bottomAnchor),
             
+            topBarHStack.topAnchor.constraint(equalTo: mainVStack.topAnchor,constant: 5),
+            topBarHStack.leadingAnchor.constraint(equalTo: mainVStack.leadingAnchor, constant: 6),
+            topBarHStack.trailingAnchor.constraint(equalTo: mainVStack.trailingAnchor, constant: -6),
+            
             //타이틀 라벨 앵커
-            titleLabel.topAnchor.constraint(equalTo: mainVStack.topAnchor, constant: 10),
-            titleLabel.leadingAnchor.constraint(equalTo: mainVStack.leadingAnchor, constant: 10),
+            titleLabel.topAnchor.constraint(equalTo: mainVStack.topAnchor, constant: 12),
+            titleLabel.leadingAnchor.constraint(equalTo: mainVStack.leadingAnchor, constant: 15),
+            titleLabel.widthAnchor.constraint(equalTo: mainVStack.widthAnchor, multiplier: 0.8),
+            
+            searchIcon.topAnchor.constraint(equalTo: topBarHStack.topAnchor),
+            searchIcon.trailingAnchor.constraint(equalTo: topBarHStack.trailingAnchor, constant: -5),
             
             //징르 탭바 앵커 -> 전체 화면 비율의 0.08만큼 높이만큼 차지
             genreTab.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
@@ -137,6 +163,9 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 videoViewController.modalPresentationStyle = .automatic
                 self.present(videoViewController, animated: true, completion: nil)
             }
+        } moreBtnTap: {
+            self.viewModel.updateSelectedId(post.id)
+            self.showActionSheet()
         }
         return cell
     }
@@ -147,8 +176,47 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
          indexPath를 통해 동영상, 사진 타입에 따라 높이를 다르게 설정해줘도 좋을 것 같음
          */
         let width = collectionView.bounds.width
-        let height = collectionView.bounds.height * 0.8
+        let height = collectionView.bounds.height * 0.85
         return CGSize(width: width, height: height)
     }
     
+}
+
+
+
+extension HomeViewController {
+    
+    // 옵션 버튼을 눌렀을 때 액션시트 나타나게 하는 함수
+    func showActionSheet() {
+        let actionSheet = UIAlertController()
+        
+        actionSheet.addAction(UIAlertAction(title: "저장하기", style: .default, handler: {(ACTION:UIAlertAction) in
+            print("저장됨")
+        }))
+        
+          actionSheet.addAction(UIAlertAction(title: "차단하기", style: .destructive, handler: {(ACTION:UIAlertAction) in
+              self.deleteCheckAlert()
+          }))
+        
+        actionSheet.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
+        
+        self.present(actionSheet, animated: true, completion: nil)        
+    }
+    
+    
+    // 진짜 차단할 것인지 다시한번 묻는 함수
+    func deleteCheckAlert() {
+        let alert = UIAlertController(title: "차단하기", message: "정말 이 게시물을 차단하시겠습니까?", preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "네", style: .default) { _ in
+            self.viewModel.blockPost() //뷰모델에서 삭제 작업 진행
+        }
+        let cancel = UIAlertAction(title: "아니오", style: .cancel) { _ in
+            
+        }
+        alert.addAction(action)
+        alert.addAction(cancel)
+        
+        present(alert, animated: true, completion: nil)
+    }
 }
