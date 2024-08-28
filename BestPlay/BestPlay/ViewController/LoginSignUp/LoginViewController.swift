@@ -114,18 +114,10 @@ class LoginViewController: BaseViewController {
     private lazy var naverButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("네이버 로그인", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         button.backgroundColor = .systemGreen
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 10
-        
-        for family in UIFont.familyNames {
-            print("Family: \(family)")
-            
-            for name in UIFont.fontNames(forFamilyName: family) {
-                print("Font Name: \(name)")
-            }
-        }
- 
         return button
     }()
     
@@ -133,6 +125,7 @@ class LoginViewController: BaseViewController {
     private lazy var kakaoButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("카카오 로그인", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         button.backgroundColor = .yellow
         button.setTitleColor(.black, for: .normal)
         button.layer.cornerRadius = 10
@@ -143,6 +136,7 @@ class LoginViewController: BaseViewController {
     private lazy var googleButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("구글 로그인", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         button.backgroundColor = .white
         button.setTitleColor(.black, for: .normal)
         button.layer.cornerRadius = 10
@@ -151,16 +145,7 @@ class LoginViewController: BaseViewController {
         return button
     }()
 
-    // 페이스북 로그인 버튼
-    private lazy var facebookButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("페이스북 로그인", for: .normal)
-        button.backgroundColor = .systemBlue
-        button.setTitleColor(.white, for: .normal)
-        button.layer.cornerRadius = 10
-        return button
-    }()
-    
+
     // 로그인 관련 UI 요소들을 담은 스택뷰
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [idTextField, passwordTextField, loginButton])
@@ -216,8 +201,8 @@ class LoginViewController: BaseViewController {
         
         NSLayoutConstraint.activate([
             // 제목 레이블 레이아웃 설정
-            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
-            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 46),
+            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             
             // 부제목 레이블 레이아웃 설정
             subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 48),
@@ -227,7 +212,7 @@ class LoginViewController: BaseViewController {
             stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -20),
             stackView.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -48),
+            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
             // 소셜 로그인 스택뷰 레이아웃 설정
             socialStackView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 30),
