@@ -14,7 +14,7 @@ class SettingViewController: UIViewController {
     private lazy var vStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.spacing = 40
+        stackView.spacing = 20
         return stackView
     }()
     
@@ -23,6 +23,7 @@ class SettingViewController: UIViewController {
         let button = UIButton()
         button.setTitle("이용약관", for: .normal)
         button.backgroundColor = .systemGray
+        button.layer.cornerRadius = 10
         
         button.addAction(UIAction { _ in
             print("이용약관 학인")
@@ -40,6 +41,7 @@ class SettingViewController: UIViewController {
         let button = UIButton()
         button.setTitle("로그아웃", for: .normal)
         button.backgroundColor = .systemGray
+        button.layer.cornerRadius = 10
         
         button.addAction(UIAction { _ in
             
@@ -54,13 +56,10 @@ class SettingViewController: UIViewController {
             let logOutAction = UIAlertAction(title: "로그아웃", style: .destructive, handler: { _ in
                 print("로그아웃")
                 
-                self.navigationController?.popToRootViewController(animated: true)
                 
-                // 위에 self.navigationControll?를 삭제하고 밑의 주석을 풀면 로그아웃 버튼을 누르면 loginViewController로 넘어간다
-//                if let loginViewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") {
-//                    self.navigationController?.setViewControllers([loginViewController], animated: true)
-//                }
-                
+                if let loginViewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") {
+                    self.navigationController?.setViewControllers([loginViewController], animated: true)
+                }
             })
             
             alert.addAction(logOutAction)
@@ -106,8 +105,11 @@ class SettingViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             vStackView.centerXAnchor.constraint(equalTo: safeGuide.centerXAnchor),
-            vStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 300),
-            vStackView.widthAnchor.constraint(equalToConstant: 300),
+            vStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 200),
+            vStackView.widthAnchor.constraint(equalToConstant: 350),
+            
+            useButton.heightAnchor.constraint(equalToConstant: 50),
+            logOutButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
 }
