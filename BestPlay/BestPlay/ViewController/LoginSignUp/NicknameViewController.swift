@@ -22,6 +22,7 @@ class NicknameViewController: BaseSignUpViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        progressValue = 0.75
         setupNicknameView()
     }
 

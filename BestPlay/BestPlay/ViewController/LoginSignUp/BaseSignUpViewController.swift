@@ -8,11 +8,16 @@
 import UIKit
 
 class BaseSignUpViewController: UIViewController {
-
+    
     // 공통적으로 사용할 UI 요소들
     let progressView = UIProgressView(progressViewStyle: .default)
     let nextButton = UIButton(type: .system)
-
+    var progressValue: Float = 0.0 {
+        didSet {
+            progressView.setProgress(progressValue, animated: true)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground

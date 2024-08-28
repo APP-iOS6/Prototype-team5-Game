@@ -24,6 +24,7 @@ class ProfileImageViewController: BaseSignUpViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        progressValue = 1.0
         setupProfileImageView()
     }
 

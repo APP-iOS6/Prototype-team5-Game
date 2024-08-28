@@ -35,6 +35,7 @@ class PasswordViewController: BaseSignUpViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        progressValue = 0.5
         setupPasswordView()
     }
 

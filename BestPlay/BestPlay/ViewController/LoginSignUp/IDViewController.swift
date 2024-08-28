@@ -22,6 +22,7 @@ class IDViewController: BaseSignUpViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        progressValue = 0.25
         setupIDView()
     }
 
