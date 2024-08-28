@@ -14,7 +14,7 @@ class SettingViewController: UIViewController {
     private lazy var vStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.spacing = 40
+        stackView.spacing = 20
         return stackView
     }()
     
@@ -24,6 +24,7 @@ class SettingViewController: UIViewController {
         button.setTitle("이용약관", for: .normal)
         button.backgroundColor = .systemGray
         button.layer.cornerRadius = 10
+
         button.addAction(UIAction { _ in
             print("이용약관 학인")
             let viewController = TermsofUseViewController()
@@ -41,6 +42,7 @@ class SettingViewController: UIViewController {
         button.setTitle("로그아웃", for: .normal)
         button.backgroundColor = .systemGray
         button.layer.cornerRadius = 10
+
         button.addAction(UIAction { _ in
             
             let alert = UIAlertController(title: "로그아웃 확인",
@@ -52,6 +54,7 @@ class SettingViewController: UIViewController {
             })
             
             let logOutAction = UIAlertAction(title: "로그아웃", style: .destructive, handler: { _ in
+
                 self.navigationController?.popViewController(animated: false)
                 MainTabBarViewController.shared.selectedIndex = 0
                 MainTabBarViewController.shared.dismiss(animated: true)
@@ -60,7 +63,11 @@ class SettingViewController: UIViewController {
                 //                if let loginViewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") {
                 //                    self.navigationController?.setViewControllers([loginViewController], animated: true)
                 //                }
+
                 
+                if let loginViewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") {
+                    self.navigationController?.setViewControllers([loginViewController], animated: true)
+                }
             })
             
             alert.addAction(logOutAction)
@@ -106,8 +113,11 @@ class SettingViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             vStackView.centerXAnchor.constraint(equalTo: safeGuide.centerXAnchor),
-            vStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 300),
-            vStackView.widthAnchor.constraint(equalToConstant: 300),
+            vStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 200),
+            vStackView.widthAnchor.constraint(equalToConstant: 350),
+            
+            useButton.heightAnchor.constraint(equalToConstant: 50),
+            logOutButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
 }

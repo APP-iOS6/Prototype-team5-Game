@@ -107,8 +107,6 @@ class MyPageViewController: UIViewController, UICollectionViewDataSource, UIColl
         
         return button
     }()
-
-    
     
     // 올린 게시물 수 만큼 보여주는 postLabel
     private lazy var postLabel: UILabel = {
@@ -154,10 +152,7 @@ class MyPageViewController: UIViewController, UICollectionViewDataSource, UIColl
         let button = UIButton(configuration: config)
         button.addAction(UIAction { _ in
             print("설정 진입")
-            
-            let viewController = SettingViewController()
-            
-            self.navigationController?.pushViewController(viewController, animated: true)
+            button.addTarget(self, action: #selector(self.goToSettings), for: .touchUpInside)
         }, for: .touchUpInside)
         return button
     }()
@@ -185,8 +180,7 @@ class MyPageViewController: UIViewController, UICollectionViewDataSource, UIColl
         
         title = "프로필"
         view.backgroundColor = .systemBackground
-        
-        
+   
         buildInterface()
     }
     
@@ -299,6 +293,16 @@ class MyPageViewController: UIViewController, UICollectionViewDataSource, UIColl
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("선택한 이미지 번호: \(imageNames[indexPath.item])")
     }
+    
+    @objc func goToSettings() {
+        if let navigationController = self.navigationController {
+            let settingController = SettingViewController()
+            navigationController.pushViewController(settingController, animated: true)
+        } else {
+            print("Navigation controller is nil")
+        }
+    }
+    
 }
 
 #Preview {

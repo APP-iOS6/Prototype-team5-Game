@@ -40,12 +40,12 @@ class MainTabBarViewController: UITabBarController, UITabBarControllerDelegate {
     }()
     
     private lazy var profile: UINavigationController = {
+
         let myPageViewController = MyPageViewController()
         let myPageNavigationController = UINavigationController(rootViewController: myPageViewController)
         
         
         myPageViewController.tabBarItem = UITabBarItem(title: "프로필", image: UIImage(systemName: "person.crop.circle.fill"), tag: 2)
-        
         return myPageNavigationController
     }()
     
