@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		5006E5EB2C7EE375004B70C9 /* Paperlogy-7Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5006E5EA2C7EE375004B70C9 /* Paperlogy-7Bold.ttf */; };
+		5006E5ED2C7EE9EC004B70C9 /* IDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5006E5EC2C7EE9EC004B70C9 /* IDViewController.swift */; };
+		5006E5EF2C7EEA0B004B70C9 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5006E5EE2C7EEA0B004B70C9 /* PasswordViewController.swift */; };
+		5006E5F12C7EEA33004B70C9 /* NicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5006E5F02C7EEA33004B70C9 /* NicknameViewController.swift */; };
+		5006E5F32C7EEA69004B70C9 /* ProfileImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5006E5F22C7EEA69004B70C9 /* ProfileImageViewController.swift */; };
 		5085F2F52C7D5C2A00F1DF47 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5085F2F42C7D5C2A00F1DF47 /* LoginViewController.swift */; };
 		5085F2F72C7D659B00F1DF47 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5085F2F62C7D659B00F1DF47 /* SignUpViewController.swift */; };
 		5085F2F92C7D734600F1DF47 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5085F2F82C7D734600F1DF47 /* FavoriteViewController.swift */; };
@@ -45,6 +49,10 @@
 
 /* Begin PBXFileReference section */
 		5006E5EA2C7EE375004B70C9 /* Paperlogy-7Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Paperlogy-7Bold.ttf"; sourceTree = "<group>"; };
+		5006E5EC2C7EE9EC004B70C9 /* IDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDViewController.swift; sourceTree = "<group>"; };
+		5006E5EE2C7EEA0B004B70C9 /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
+		5006E5F02C7EEA33004B70C9 /* NicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewController.swift; sourceTree = "<group>"; };
+		5006E5F22C7EEA69004B70C9 /* ProfileImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageViewController.swift; sourceTree = "<group>"; };
 		5085F2F42C7D5C2A00F1DF47 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5085F2F62C7D659B00F1DF47 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		5085F2F82C7D734600F1DF47 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
@@ -98,6 +106,10 @@
 			children = (
 				5085F2F42C7D5C2A00F1DF47 /* LoginViewController.swift */,
 				5085F2F62C7D659B00F1DF47 /* SignUpViewController.swift */,
+				5006E5EC2C7EE9EC004B70C9 /* IDViewController.swift */,
+				5006E5EE2C7EEA0B004B70C9 /* PasswordViewController.swift */,
+				5006E5F02C7EEA33004B70C9 /* NicknameViewController.swift */,
+				5006E5F22C7EEA69004B70C9 /* ProfileImageViewController.swift */,
 				5085F2F82C7D734600F1DF47 /* FavoriteViewController.swift */,
 			);
 			path = LoginSignUp;
@@ -293,11 +305,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5006E5F32C7EEA69004B70C9 /* ProfileImageViewController.swift in Sources */,
 				FB9172372C7D58ED0048C059 /* MainTabBarViewController.swift in Sources */,
 				5085F2F72C7D659B00F1DF47 /* SignUpViewController.swift in Sources */,
 				FE640D8E2C7D8E6E00A110D6 /* Game.swift in Sources */,
 				FE640D952C7DB7FC00A110D6 /* CommunityUploadViewController.swift in Sources */,
 				FE640D852C7D743F00A110D6 /* BaseVerticalStackViewController.swift in Sources */,
+				5006E5EF2C7EEA0B004B70C9 /* PasswordViewController.swift in Sources */,
 				FE640D932C7DA73700A110D6 /* BaseView.swift in Sources */,
 				BE5446D72C7D7C6300C00293 /* TermsofUseViewController.swift in Sources */,
 				FB9172392C7D58F70048C059 /* BestPlay.swift in Sources */,
@@ -318,7 +332,9 @@
 				FB9172482C7D6DF20048C059 /* HomeViewController.swift in Sources */,
 				FB9172502C7D95C40048C059 /* HomeViewModel.swift in Sources */,
 				FB9172542C7DB6710048C059 /* CommentTableViewCell.swift in Sources */,
+				5006E5F12C7EEA33004B70C9 /* NicknameViewController.swift in Sources */,
 				FB91724B2C7D6F3F0048C059 /* PostCollectionViewCell.swift in Sources */,
+				5006E5ED2C7EE9EC004B70C9 /* IDViewController.swift in Sources */,
 				FB91723C2C7D59070048C059 /* BestPlayData.swift in Sources */,
 				FE640D8A2C7D8BA500A110D6 /* GameSelectView.swift in Sources */,
 				FE640D8C2C7D8C5100A110D6 /* BaseHorizontalStackViewController.swift in Sources */,
