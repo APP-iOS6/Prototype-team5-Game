@@ -88,6 +88,7 @@ class FavoriteGameViewController: UIViewController, UIPickerViewDataSource, UIPi
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+        title = "관심 게임 설정"
         setupInterface() // UI 설정
     }
     
