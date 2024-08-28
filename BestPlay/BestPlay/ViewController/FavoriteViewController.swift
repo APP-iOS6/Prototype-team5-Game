@@ -16,13 +16,16 @@ class FavoriteGameViewController: UIViewController, UIPickerViewDataSource, UIPi
     private var selectedGame: String?  // 선택된 게임 이름
     
     // UI 요소들 정의
+    
+    // 장르 선택 레이블
     private lazy var genreLabel: UILabel = {
         let label = UILabel()
-        label.text = "장르 선택" // 장르 선택 레이블
+        label.text = "장르 선택"
         label.font = UIFont.systemFont(ofSize: 18)
         return label
     }()
     
+    // 장르 선택기 (UIPickerView)
     private lazy var genrePicker: UIPickerView = {
         let picker = UIPickerView()
         picker.translatesAutoresizingMaskIntoConstraints = false
@@ -31,13 +34,15 @@ class FavoriteGameViewController: UIViewController, UIPickerViewDataSource, UIPi
         return picker
     }()
     
+    // 게임 이름 선택 레이블
     private lazy var gameNameLabel: UILabel = {
         let label = UILabel()
-        label.text = "게임 이름 선택" // 게임 이름 선택 레이블
+        label.text = "게임 이름 선택"
         label.font = UIFont.systemFont(ofSize: 18)
         return label
     }()
     
+    // 게임 이름 선택기 (UIPickerView)
     private lazy var gameNamePicker: UIPickerView = {
         let picker = UIPickerView()
         picker.translatesAutoresizingMaskIntoConstraints = false
@@ -46,12 +51,13 @@ class FavoriteGameViewController: UIViewController, UIPickerViewDataSource, UIPi
         return picker
     }()
     
+    // 건너뛰기 버튼
     private lazy var skipButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("건너뛰기", for: .normal) // 건너뛰기 버튼
+        button.setTitle("건너뛰기", for: .normal)
         button.setTitleColor(.systemBlue, for: .normal)
+        // 건너뛰기 버튼 클릭 시 탭바로 이동하는 액션 설정
         button.addAction(UIAction { _ in
-            //재민님 탭바로 가야함
             let tabBarViewController = MainTabBarViewController()
             tabBarViewController.modalPresentationStyle = .fullScreen
             self.present(tabBarViewController, animated: true)
@@ -59,14 +65,15 @@ class FavoriteGameViewController: UIViewController, UIPickerViewDataSource, UIPi
         return button
     }()
     
+    // 다음 버튼
     private lazy var nextButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("다음", for: .normal) // 다음 버튼
+        button.setTitle("다음", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .systemBlue
         button.layer.cornerRadius = 10
+        // 다음 버튼 클릭 시 탭바로 이동하는 액션 설정
         button.addAction(UIAction { _ in
-            //재민님 탭바로 가야함
             let tabBarViewController = MainTabBarViewController()
             tabBarViewController.modalPresentationStyle = .fullScreen
             self.present(tabBarViewController, animated: true)
@@ -74,8 +81,8 @@ class FavoriteGameViewController: UIViewController, UIPickerViewDataSource, UIPi
         return button
     }()
     
+    // UI 요소들을 포함하는 스택뷰 정의
     private lazy var stackView: UIStackView = {
-        // 스택뷰에 UI 요소들을 세로로 배치
         let stackView = UIStackView(arrangedSubviews: [genreLabel, genrePicker, gameNameLabel, gameNamePicker, skipButton, nextButton])
         stackView.axis = .vertical
         stackView.spacing = 16
@@ -91,7 +98,7 @@ class FavoriteGameViewController: UIViewController, UIPickerViewDataSource, UIPi
         title = "관심 게임 설정"
         setupInterface() // UI 설정
         
-        // 초기 선택값 설정
+        // 초기 선택값 설정: 첫 번째 장르를 기본 선택으로 설정
         if let firstGenre = model.genres.first {
             selectedGenre = firstGenre
             genrePicker.selectRow(0, inComponent: 0, animated: false)
@@ -105,6 +112,7 @@ class FavoriteGameViewController: UIViewController, UIPickerViewDataSource, UIPi
         
         // 오토레이아웃 설정
         NSLayoutConstraint.activate([
+            // 스택뷰의 레이아웃 설정
             stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
@@ -127,10 +135,13 @@ class FavoriteGameViewController: UIViewController, UIPickerViewDataSource, UIPi
     }
     
     // UIPickerViewDataSource와 UIPickerViewDelegate 메서드들
+    
+    // UIPickerView 컴포넌트 수 반환
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
+    // UIPickerView 각 컴포넌트 내의 항목 수 반환
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView == genrePicker {
             return model.genres.count // 장르 수 반환
@@ -141,6 +152,7 @@ class FavoriteGameViewController: UIViewController, UIPickerViewDataSource, UIPi
         return 0
     }
     
+    // UIPickerView 각 행에 표시할 제목 반환
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerView == genrePicker {
             return model.genres[row] // 장르 이름 반환
@@ -151,6 +163,7 @@ class FavoriteGameViewController: UIViewController, UIPickerViewDataSource, UIPi
         return nil
     }
     
+    // UIPickerView에서 항목 선택 시 호출
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == genrePicker {
             selectedGenre = model.genres[row] // 선택된 장르 업데이트
