@@ -67,7 +67,12 @@ class GenreTabBar: BaseViewController {
     func createGenre(_ genre: GameGenre) -> UIButton  {
         let btn = UIButton()
         //버튼 타이틀
-        btn.setTitle(genre.rawValue, for: .normal)
+        if genre == .filter {
+            btn.setImage(UIImage(systemName: "slider.vertical.3"), for: .normal)
+            btn.tintColor = .black
+        } else {
+            btn.setTitle(genre.rawValue, for: .normal)
+        }
         
         //처음 생성시 all이 선택되게끔 all버튼만 파란색으로 설정
         genre == .all ? btn.setTitleColor(.blue, for: .normal) :  btn.setTitleColor(.black, for: .normal)
