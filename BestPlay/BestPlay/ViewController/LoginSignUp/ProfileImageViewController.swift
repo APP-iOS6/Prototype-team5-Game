@@ -7,12 +7,12 @@
 
 import UIKit
 
-class ProfileImageViewController: UIViewController {
-    
+class ProfileImageViewController: BaseSignUpViewController {
+
     private lazy var profileImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(systemName: "person.circle") // 기본 프로필 이미지
+        imageView.image = UIImage(systemName: "person.circle")
         imageView.tintColor = .gray
         imageView.layer.cornerRadius = 50
         imageView.clipsToBounds = true
@@ -21,56 +21,29 @@ class ProfileImageViewController: UIViewController {
         imageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
         return imageView
     }()
-    
-    private lazy var nextButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("다음", for: .normal) // 다음 버튼
-        button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .bold)
-        button.backgroundColor = .systemBlue
-        button.layer.cornerRadius = 10
-        button.addTarget(self, action: #selector(handleNext), for: .touchUpInside)
-        return button
-    }()
-    
-    private lazy var progressView: UIProgressView = {
-        let progressView = UIProgressView(progressViewStyle: .default)
-        progressView.setProgress(0.8, animated: true) // 네 번째 단계 진행 상황
-        return progressView
-    }()
-    
-    private lazy var stackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [progressView, profileImageView, nextButton])
-        stackView.axis = .vertical
-        stackView.spacing = 20
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        return stackView
-    }()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
-        title = "프로필 이미지 설정"
-        setupInterface()
+        setupProfileImageView()
     }
-    
-    private func setupInterface() {
-        view.addSubview(stackView)
-        
+
+    private func setupProfileImageView() {
+        view.addSubview(profileImageView)
+
         NSLayoutConstraint.activate([
-            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            nextButton.heightAnchor.constraint(equalToConstant: 50)
+            profileImageView.topAnchor.constraint(equalTo: progressView.bottomAnchor, constant: 40),
+            profileImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
+        
+        nextButton.addTarget(self, action: #selector(handleNextButtonTapped), for: .touchUpInside)
     }
-    
-    @objc private func handleNext() {
+
+    override func handleNextButtonTapped() {
         let favoriteGameVC = FavoriteGameViewController()
         navigationController?.pushViewController(favoriteGameVC, animated: true)
     }
 }
+
 
 #Preview {
     ProfileImageViewController()
