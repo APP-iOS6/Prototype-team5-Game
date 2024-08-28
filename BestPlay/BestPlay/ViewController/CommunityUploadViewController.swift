@@ -7,11 +7,20 @@
 
 import UIKit
 
-final class CommunityUploadViewController: BaseVerticalStackViewController {
+final class CommunityUploadViewController: BaseVerticalStackViewController, UITextViewDelegate {
+    
+    private lazy var topItemStackView: UIStackView = {
+        let view = UIStackView()
+        view.axis = .vertical
+        view.alignment = .leading
+        view.spacing = 15
+        
+        return view
+    }()
     
     private lazy var titleLabel: UILabel = {
         let view = UILabel()
-        view.text = "커뮤니티 업로드"
+        view.text = "글 올리기"
         view.font = .systemFont(ofSize: 30, weight: .bold)
         
         return view
@@ -42,13 +51,14 @@ final class CommunityUploadViewController: BaseVerticalStackViewController {
         let view = UITextView()
         
         view.font = .preferredFont(forTextStyle: .title2)
-        view.isEditable = true
+        view.text = textViewPlaceHolder
+        view.textColor = .lightGray
         view.textAlignment = .left
-        view.layer.borderWidth = 1.5
-        view.layer.borderColor = UIColor.gray.cgColor
+        view.delegate = self
         
         return view
     }()
+    private let textViewPlaceHolder: String = "글을 입력하세요"
     private lazy var uploadButton: UIButton = {
         let view = UIButton()
         var config = UIButton.Configuration.filled()
@@ -72,29 +82,45 @@ final class CommunityUploadViewController: BaseVerticalStackViewController {
         
         let safeArea = view.safeAreaLayoutGuide
         
-        verticalStackView.alignment = .leading
-        verticalStackView.spacing = 20
-        verticalStackView.addArrangedSubviews(titleLabel, gameSelectView, contentSelectButton, textEditView, uploadButton)
+        topItemStackView.addArrangedSubviews(titleLabel, gameSelectView)
+
+        verticalStackView.addArrangedSubviews(topItemStackView, contentSelectButton, textEditView)
         view.addSubview(verticalStackView)
+        view.addSubview(uploadButton)
         
         NSLayoutConstraint.activate([
-            verticalStackView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 10),
-            verticalStackView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -10),
+            uploadButton.topAnchor.constraint(equalTo: verticalStackView.topAnchor),
+            uploadButton.trailingAnchor.constraint(equalTo: verticalStackView.trailingAnchor, constant: -10),
+            uploadButton.widthAnchor.constraint(equalToConstant: 150),
             
-            titleLabel.heightAnchor.constraint(equalToConstant: 80),
+            topItemStackView.topAnchor.constraint(equalTo: verticalStackView.topAnchor),
+            topItemStackView.bottomAnchor.constraint(equalTo: gameSelectView.bottomAnchor),
+            topItemStackView.leadingAnchor.constraint(equalTo: verticalStackView.leadingAnchor, constant: 10),
+            topItemStackView.trailingAnchor.constraint(equalTo: verticalStackView.trailingAnchor, constant: -10),
             
-            gameSelectView.heightAnchor.constraint(equalToConstant: 80),
+            contentSelectButton.topAnchor.constraint(equalTo: topItemStackView.bottomAnchor, constant: 10),
+            contentSelectButton.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 20),
+            contentSelectButton.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -20),
             
-            contentSelectButton.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor),
-            contentSelectButton.bottomAnchor.constraint(equalTo: verticalStackView.bottomAnchor, constant: -350),
-            
-            textEditView.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor),
-            
-            uploadButton.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor),
-            uploadButton.topAnchor.constraint(equalTo: verticalStackView.bottomAnchor, constant: -55),
-            uploadButton.bottomAnchor.constraint(equalTo: verticalStackView.bottomAnchor),
-            uploadButton.leadingAnchor.constraint(equalTo: verticalStackView.leadingAnchor, constant: 50)
+            textEditView.widthAnchor.constraint(equalTo: verticalStackView.widthAnchor),
+            textEditView.bottomAnchor.constraint(equalTo: view.keyboardLayoutGuide.topAnchor)
         ])
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text == textViewPlaceHolder {
+            textView.text = nil
+            textView.textColor = .black
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        let trimResult = textView.text.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        if trimResult.isEmpty {
+            textView.text = textViewPlaceHolder
+            textView.textColor = .lightGray
+        }
     }
 }
 

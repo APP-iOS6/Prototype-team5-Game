@@ -32,11 +32,16 @@ final class GameSelectView: BaseView {
         }
         
         addSubview(horizontalStackView)
+        
+        NSLayoutConstraint.activate([
+            topAnchor.constraint(equalTo: horizontalStackView.topAnchor),
+            bottomAnchor.constraint(equalTo: horizontalStackView.bottomAnchor)
+        ])
     }
     
     private func createImageView(image: UIImage) -> UIImageView {
         let imageView = UIImageView()
-        let imageViewSize = 80.0
+        let imageViewSize = 65.0
         
         imageView.image = image
         imageView.contentMode = .scaleAspectFit
