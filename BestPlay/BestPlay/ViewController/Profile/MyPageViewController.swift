@@ -273,6 +273,7 @@ class MyPageViewController: UIViewController, UICollectionViewDataSource, UIColl
             
             ButtonHStackView.topAnchor.constraint(equalTo: NameHStackView.topAnchor, constant: 50),
             ButtonHStackView.centerXAnchor.constraint(equalTo: safeGuide.centerXAnchor),
+          
             
 //            settingButton.trailingAnchor.constraint(equalTo: safeGuide.trailingAnchor, constant: -20),
 //            settingButton.topAnchor.constraint(equalTo: safeGuide.topAnchor, constant: -15),
