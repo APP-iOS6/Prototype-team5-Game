@@ -70,4 +70,11 @@ final class HomeViewModel {
             filterPostsBySelectedGenre()
         }
     }
+    
+    //포스팅 업로드 누를 시 실행되는 함수
+    func addDummyData() {
+        print("더미데이터 함수 탓음")
+        postList.insert(dummyData, at: 0)
+        filterPostsBySelectedGenre()
+    }
 }
