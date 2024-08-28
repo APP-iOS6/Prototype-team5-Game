@@ -54,6 +54,10 @@ class BaseSignUpViewController: UIViewController {
             nextButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
         ])
     }
+    
+    func animateProgress() {
+        progressView.setProgress(progressValue, animated: true)
+    }
 
     // 공통 동작 메서드 (필요 시 추가 가능)
     @objc func handleNextButtonTapped() {

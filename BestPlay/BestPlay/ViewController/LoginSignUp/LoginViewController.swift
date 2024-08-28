@@ -41,7 +41,7 @@ class LoginViewController: BaseViewController {
     private lazy var subtitleLabel: UILabel = {
         let label = UILabel()
         label.text = "최고의 플레이에 도전해 보세요"
-        label.font = UIFont.systemFont(ofSize: 20)
+        label.font = UIFont(name: "Ghanachocolate", size: 20)
         label.textColor = .systemGray
         label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false

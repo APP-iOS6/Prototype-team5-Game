@@ -13,6 +13,7 @@
 		5006E5F12C7EEA33004B70C9 /* NicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5006E5F02C7EEA33004B70C9 /* NicknameViewController.swift */; };
 		5006E5F32C7EEA69004B70C9 /* ProfileImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5006E5F22C7EEA69004B70C9 /* ProfileImageViewController.swift */; };
 		5006E5F52C7EEFB8004B70C9 /* BaseSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5006E5F42C7EEFB8004B70C9 /* BaseSignUpViewController.swift */; };
+		5006E5F72C7EFE53004B70C9 /* Ghanachocolate.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5006E5F62C7EFE53004B70C9 /* Ghanachocolate.ttf */; };
 		5085F2F52C7D5C2A00F1DF47 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5085F2F42C7D5C2A00F1DF47 /* LoginViewController.swift */; };
 		5085F2F72C7D659B00F1DF47 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5085F2F62C7D659B00F1DF47 /* SignUpViewController.swift */; };
 		5085F2F92C7D734600F1DF47 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5085F2F82C7D734600F1DF47 /* FavoriteViewController.swift */; };
@@ -55,6 +56,7 @@
 		5006E5F02C7EEA33004B70C9 /* NicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewController.swift; sourceTree = "<group>"; };
 		5006E5F22C7EEA69004B70C9 /* ProfileImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageViewController.swift; sourceTree = "<group>"; };
 		5006E5F42C7EEFB8004B70C9 /* BaseSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSignUpViewController.swift; sourceTree = "<group>"; };
+		5006E5F62C7EFE53004B70C9 /* Ghanachocolate.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Ghanachocolate.ttf; sourceTree = "<group>"; };
 		5085F2F42C7D5C2A00F1DF47 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5085F2F62C7D659B00F1DF47 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		5085F2F82C7D734600F1DF47 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
@@ -107,13 +109,13 @@
 			isa = PBXGroup;
 			children = (
 				5085F2F42C7D5C2A00F1DF47 /* LoginViewController.swift */,
-				5085F2F62C7D659B00F1DF47 /* SignUpViewController.swift */,
 				5006E5F42C7EEFB8004B70C9 /* BaseSignUpViewController.swift */,
 				5006E5EC2C7EE9EC004B70C9 /* IDViewController.swift */,
 				5006E5EE2C7EEA0B004B70C9 /* PasswordViewController.swift */,
 				5006E5F02C7EEA33004B70C9 /* NicknameViewController.swift */,
 				5006E5F22C7EEA69004B70C9 /* ProfileImageViewController.swift */,
 				5085F2F82C7D734600F1DF47 /* FavoriteViewController.swift */,
+				5085F2F62C7D659B00F1DF47 /* SignUpViewController.swift */,
 			);
 			path = LoginSignUp;
 			sourceTree = "<group>";
@@ -122,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				5006E5EA2C7EE375004B70C9 /* Paperlogy-7Bold.ttf */,
+				5006E5F62C7EFE53004B70C9 /* Ghanachocolate.ttf */,
 				FB91721C2C7D540A0048C059 /* BestPlay */,
 				FB91721B2C7D540A0048C059 /* Products */,
 			);
@@ -298,6 +301,7 @@
 			files = (
 				FB9172272C7D540C0048C059 /* Assets.xcassets in Resources */,
 				5006E5EB2C7EE375004B70C9 /* Paperlogy-7Bold.ttf in Resources */,
+				5006E5F72C7EFE53004B70C9 /* Ghanachocolate.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
