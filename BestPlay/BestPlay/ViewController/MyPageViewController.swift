@@ -45,7 +45,7 @@ class MyPageViewController: UIViewController, UICollectionViewDataSource, UIColl
     
     private lazy var userImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "12")
+        imageView.image = UIImage(named: "0")
         imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 45
         imageView.layer.borderWidth = 2
