@@ -20,7 +20,7 @@ struct BestPlay: Identifiable {
     var heart: Int //좋아요 수
     var comment: [Comment] //댓글 배열
     var myheart: Bool = false //내가 좋아요를 눌른 여부
-    var genre: GameGenre //게임 장라ㅡ
+    var genre: [GameGenre] //게임 장라ㅡ
 }
 
 
