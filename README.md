@@ -39,14 +39,11 @@
 <br>
 
 # 주요화면
+![Simulator Screen Recording - iPhone 15 Pro - 2024-08-29 at 14 53 45](https://github.com/user-attachments/assets/7a9a073c-3b97-4aed-8902-3bad824357dc)
+![Simulator Screen Recording - iPhone 15 Pro - 2024-08-29 at 14 54 15](https://github.com/user-attachments/assets/fd09d24b-0f07-40a3-93d3-467fd57e12c3)
 
-![Simulator Screen Recording - iPhone 15 Pro - 2024-08-28 at 19 09 41](https://github.com/user-attachments/assets/8f6a7385-1986-48fe-b1ac-65db722ecb3a)
-![Simulator Screen Recording - iPhone 15 Pro - 2024-08-28 at 19 10 24](https://github.com/user-attachments/assets/258e4519-2d0e-42d3-ab54-8f1255f01952)
-
-![Simulator Screen Recording - iPhone 15 Pro - 2024-08-29 at 13 53 31](https://github.com/user-attachments/assets/716e36f3-a9b1-44ce-aeda-e4aecf257f0e)
-![Simulator Screen Recording - iPhone 15 Pro - 2024-08-28 at 19 54 33](https://github.com/user-attachments/assets/c3fa6905-e6a8-4022-a78d-15fda0b99632)
-
-
+![Simulator Screen Recording - iPhone 15 Pro - 2024-08-29 at 14 54 52](https://github.com/user-attachments/assets/b254e68d-8c67-4d06-b011-683fa58e2543)
+![Simulator Screen Recording - iPhone 15 Pro - 2024-08-29 at 15 53 19](https://github.com/user-attachments/assets/c863451f-aec4-4c05-bff5-f32b78bf6664)
 
 
 <br>
