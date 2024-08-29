@@ -52,7 +52,9 @@
 <br>
 
 # 플로우 차트
-<img width="1090" alt="image" src="https://github.com/user-attachments/assets/8662724f-c4c0-4fc7-b05e-56463657b004">
+
+<img width="954" alt="image" src="https://github.com/user-attachments/assets/f5086d7c-c237-49f6-84f7-c1b8246838d3">
+
 
 <br>
 
