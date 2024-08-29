@@ -78,13 +78,11 @@ class SettingViewController: UIViewController {
             })
             
             let logOutAction = UIAlertAction(title: "로그아웃", style: .destructive, handler: { _ in
-                print("로그아웃")
-                
-                
-                if let loginViewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") {
-                    self.navigationController?.setViewControllers([loginViewController], animated: true)
-                }
-            })
+                            self.navigationController?.popViewController(animated: false)
+                            MainTabBarViewController.shared.selectedIndex = 0
+                            MainTabBarViewController.shared.dismiss(animated: true)
+
+                        })
             
             alert.addAction(logOutAction)
             alert.addAction(cancelAction)
