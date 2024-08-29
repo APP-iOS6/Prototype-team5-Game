@@ -41,7 +41,7 @@ class LoginViewController: BaseViewController {
     private lazy var subtitleLabel: UILabel = {
         let label = UILabel()
         label.text = "최고의 플레이에 도전해 보세요"
-        label.font = UIFont(name: "Ghanachocolate", size: 20)
+        label.font = UIFont(name: "Paperlogy 7 Bold", size: 20)
         label.textColor = .systemGray
         label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -110,6 +110,23 @@ class LoginViewController: BaseViewController {
         return button
     }()
     
+    // 애플 로그인 버튼
+    private lazy var appleButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Apple 로그인", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        button.backgroundColor = .black
+        button.setTitleColor(.white, for: .normal)
+        button.layer.cornerRadius = 10
+        button.layer.masksToBounds = true
+        button.addAction(UIAction { _ in
+            let tabBarViewController = MainTabBarViewController.shared
+            tabBarViewController.modalPresentationStyle = .fullScreen
+            self.present(tabBarViewController, animated: true)
+        }, for: .touchUpInside)
+        return button
+    }()
+    
     // 네이버 로그인 버튼
     private lazy var naverButton: UIButton = {
         let button = UIButton(type: .system)
@@ -175,7 +192,7 @@ class LoginViewController: BaseViewController {
     
     // 소셜 로그인 버튼들을 담은 스택뷰
     private lazy var socialStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [naverButton, kakaoButton, googleButton])
+        let stackView = UIStackView(arrangedSubviews: [appleButton, naverButton, kakaoButton])
         stackView.axis = .vertical
         stackView.alignment = .fill
         stackView.distribution = .fillEqually
