@@ -62,10 +62,10 @@
 <br>
 
 # 개발자
-- 김동경
-- 이정민
-- 황인영
-- 홍재민
+- 김동경 (https://github.com/dongykung)
+- 이정민 (https://github.com/Jeolmi123)
+- 황인영 (https://github.com/InyoungTechit)
+- 홍재민 (https://github.com/IUCyH)
 
 
 # 라이선스
