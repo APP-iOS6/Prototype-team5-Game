@@ -24,7 +24,7 @@ class SettingViewController: UIViewController {
         button.setTitle("이용약관", for: .normal)
         button.backgroundColor = .systemGray
         button.layer.cornerRadius = 10
-
+        
         button.addAction(UIAction { _ in
             print("이용약관 학인")
             let viewController = TermsofUseViewController()
