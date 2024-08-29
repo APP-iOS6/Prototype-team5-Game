@@ -19,7 +19,6 @@ class PasswordViewController: BaseSignUpViewController {
         label.numberOfLines = 0 // 여러 줄 텍스트 허용
         label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
-        textField.autocapitalizationType = .none
         return label
     }()
 
@@ -47,6 +46,7 @@ class PasswordViewController: BaseSignUpViewController {
         textField.layer.cornerRadius = 10
         textField.layer.borderColor = UIColor.systemGray3.cgColor
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.autocapitalizationType = .none
         return textField
     }()
 
