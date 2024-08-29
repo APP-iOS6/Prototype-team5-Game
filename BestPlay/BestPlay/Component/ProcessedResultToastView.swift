@@ -20,7 +20,8 @@ final class ProcessedResultToastView: BaseView {
     }()
     
     override func setupLayout() {
-        backgroundColor = .systemYellow
+        backgroundColor = .gray
+        alpha = 0.5
         layer.cornerRadius = 8
     }
     
@@ -28,7 +29,7 @@ final class ProcessedResultToastView: BaseView {
         addSubview(comment)
         
         NSLayoutConstraint.activate([
-            widthAnchor.constraint(equalToConstant: 300),
+            widthAnchor.constraint(equalToConstant: 370),
             heightAnchor.constraint(equalToConstant: 30),
             
             comment.centerXAnchor.constraint(equalTo: centerXAnchor),
