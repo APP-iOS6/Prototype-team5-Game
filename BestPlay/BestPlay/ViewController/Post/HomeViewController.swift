@@ -15,6 +15,8 @@ class HomeViewController: BaseViewController {
     //컴바인 - 구독 취소를 위한 객체(메모리 누수 방지)
     private var subscriptions = Set<AnyCancellable>()
     
+    private let notificationToastView: ProcessedResultToastView = ProcessedResultToastView()
+    
     //메인 vStack
     private lazy var mainVStack: UIStackView = {
         let stack = UIStackView()
@@ -72,6 +74,8 @@ class HomeViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        notificationToastView.isHidden = true
         bind() //post 구독을 위해 호출하는 함수
     }
     
@@ -88,6 +92,7 @@ class HomeViewController: BaseViewController {
     //인터페이스 설정
     override func setupInterface() {
         view.addSubview(mainVStack)
+        view.addSubview(notificationToastView)
         topBarHStack.addArrangedSubview(titleLabel)
         topBarHStack.addArrangedSubview(searchIcon)
         
@@ -125,7 +130,10 @@ class HomeViewController: BaseViewController {
             postCollectionView.topAnchor.constraint(equalTo: genreTab.bottomAnchor,constant: 10),
             postCollectionView.leadingAnchor.constraint(equalTo: mainVStack.leadingAnchor),
             postCollectionView.trailingAnchor.constraint(equalTo: mainVStack.trailingAnchor),
-            postCollectionView.bottomAnchor.constraint(equalTo: mainVStack.bottomAnchor)
+            postCollectionView.bottomAnchor.constraint(equalTo: mainVStack.bottomAnchor),
+            
+            notificationToastView.centerXAnchor.constraint(equalTo: safeGuide.centerXAnchor),
+            notificationToastView.topAnchor.constraint(equalTo: safeGuide.topAnchor, constant: 95)
         ])
     }
     
@@ -189,6 +197,20 @@ extension HomeViewController {
     //포스팅에서 업로드 누를 시 실행되는 함수
     func addDummyData() {
         self.viewModel.addDummyData()
+        
+        showToastView(text: "업로드 완료", displayTime: 0.8)
+    }
+    
+    private func showToastView(text: String, displayTime: Double) {
+        notificationToastView.setComment(text)
+        
+        notificationToastView.isHidden = false
+        Just(true)
+            .delay(for: .seconds(displayTime), scheduler: RunLoop.main)
+            .sink { [weak self] isVisiable in
+                self?.notificationToastView.isHidden = isVisiable
+            }
+            .store(in: &subscriptions)
     }
 
     

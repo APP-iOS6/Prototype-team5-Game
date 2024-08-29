@@ -43,6 +43,7 @@
 		FE640D8E2C7D8E6E00A110D6 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE640D8D2C7D8E6E00A110D6 /* Game.swift */; };
 		FE640D932C7DA73700A110D6 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE640D922C7DA73700A110D6 /* BaseView.swift */; };
 		FE640D952C7DB7FC00A110D6 /* CommunityUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE640D942C7DB7FC00A110D6 /* CommunityUploadViewController.swift */; };
+		FEF9AF432C800626003C37AC /* ProcessedResultToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF9AF422C800626003C37AC /* ProcessedResultToastView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +85,7 @@
 		FE640D8D2C7D8E6E00A110D6 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		FE640D922C7DA73700A110D6 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		FE640D942C7DB7FC00A110D6 /* CommunityUploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityUploadViewController.swift; sourceTree = "<group>"; };
+		FEF9AF422C800626003C37AC /* ProcessedResultToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessedResultToastView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +193,7 @@
 			children = (
 				FE640D892C7D8BA500A110D6 /* GameSelectView.swift */,
 				FB9172552C7DD1280048C059 /* GenreTabBar.swift */,
+				FEF9AF422C800626003C37AC /* ProcessedResultToastView.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 				FB9172402C7D593E0048C059 /* BaseViewController.swift in Sources */,
 				5085F2F92C7D734600F1DF47 /* FavoriteViewController.swift in Sources */,
 				5085F2F52C7D5C2A00F1DF47 /* LoginViewController.swift in Sources */,
+				FEF9AF432C800626003C37AC /* ProcessedResultToastView.swift in Sources */,
 				FB9172482C7D6DF20048C059 /* HomeViewController.swift in Sources */,
 				FB9172502C7D95C40048C059 /* HomeViewModel.swift in Sources */,
 				FB9172542C7DB6710048C059 /* CommentTableViewCell.swift in Sources */,

@@ -45,6 +45,7 @@ final class GameSelectView: BaseView {
         
         imageView.image = image
         imageView.contentMode = .scaleAspectFit
+        imageView.isUserInteractionEnabled = true
         
         imageView.layer.masksToBounds = true
         imageView.layer.cornerRadius = imageViewSize / 2

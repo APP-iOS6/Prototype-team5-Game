@@ -60,6 +60,7 @@ final class CommunityUploadViewController: BaseVerticalStackViewController, UITe
         return view
     }()
     private let textViewPlaceHolder: String = "글을 입력하세요"
+    private let uploadResultToastView: ProcessedResultToastView = ProcessedResultToastView()
     private lazy var uploadButton: UIButton = {
         let view = UIButton()
         var config = UIButton.Configuration.filled()
@@ -67,15 +68,13 @@ final class CommunityUploadViewController: BaseVerticalStackViewController, UITe
         config.title = "업로드"
         
         view.configuration = config
-        view.addAction(UIAction { _ in
+        view.addAction(UIAction { [weak self] _ in
             MainTabBarViewController.shared.selectedIndex = 0
             MainTabBarViewController.shared.home.addDummyData()
         }, for: .touchUpInside)
         
         return view
     }()
-    
-  
     
     override func viewDidLoad() {
         super.viewDidLoad()
