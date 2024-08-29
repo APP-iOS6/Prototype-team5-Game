@@ -49,9 +49,10 @@ class FavoriteGameViewController: UIViewController, UITableViewDataSource, UITab
         button.setTitle("건너뛰기", for: .normal)
         button.setTitleColor(.systemBlue, for: .normal)
         button.addAction(UIAction { _ in
-            let tabBarViewController = MainTabBarViewController()
+            let tabBarViewController = MainTabBarViewController.shared
             tabBarViewController.modalPresentationStyle = .fullScreen
             self.present(tabBarViewController, animated: true)
+            _ = self.navigationController?.popToRootViewController(animated: true)
         }, for: .touchUpInside)
         return button
     }()
@@ -67,6 +68,7 @@ class FavoriteGameViewController: UIViewController, UITableViewDataSource, UITab
             let tabBarViewController = MainTabBarViewController.shared
             tabBarViewController.modalPresentationStyle = .fullScreen
             self.present(tabBarViewController, animated: true)
+            _ = self.navigationController?.popToRootViewController(animated: true)
         }, for: .touchUpInside)
         return button
     }()
