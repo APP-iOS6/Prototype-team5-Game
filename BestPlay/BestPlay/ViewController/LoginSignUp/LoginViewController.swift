@@ -217,11 +217,11 @@ class LoginViewController: BaseViewController {
         
         NSLayoutConstraint.activate([
             // 제목 레이블 레이아웃 설정
-            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 35),
             titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             
             // 부제목 레이블 레이아웃 설정
-            subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 48),
+            subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
             subtitleLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
             
             // 로그인 관련 스택뷰 레이아웃 설정
