@@ -31,6 +31,7 @@ class NicknameViewController: BaseSignUpViewController {
         textField.layer.cornerRadius = 10
         textField.layer.borderColor = UIColor.systemGray3.cgColor
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.autocapitalizationType = .none
         return textField
     }()
 
