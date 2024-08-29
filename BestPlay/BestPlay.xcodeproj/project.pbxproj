@@ -44,6 +44,7 @@
 		FE640D932C7DA73700A110D6 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE640D922C7DA73700A110D6 /* BaseView.swift */; };
 		FE640D952C7DB7FC00A110D6 /* CommunityUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE640D942C7DB7FC00A110D6 /* CommunityUploadViewController.swift */; };
 		FEF9AF432C800626003C37AC /* ProcessedResultToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF9AF422C800626003C37AC /* ProcessedResultToastView.swift */; };
+		FEF9AF462C80399F003C37AC /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF9AF452C80399F003C37AC /* AuthenticationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +87,7 @@
 		FE640D922C7DA73700A110D6 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		FE640D942C7DB7FC00A110D6 /* CommunityUploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityUploadViewController.swift; sourceTree = "<group>"; };
 		FEF9AF422C800626003C37AC /* ProcessedResultToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessedResultToastView.swift; sourceTree = "<group>"; };
+		FEF9AF452C80399F003C37AC /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 			children = (
 				5006E5EA2C7EE375004B70C9 /* Paperlogy-7Bold.ttf */,
 				5006E5F62C7EFE53004B70C9 /* Ghanachocolate.ttf */,
+				FEF9AF442C8038A9003C37AC /* Manager */,
 				FB91721C2C7D540A0048C059 /* BestPlay */,
 				FB91721B2C7D540A0048C059 /* Products */,
 			);
@@ -256,6 +259,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		FEF9AF442C8038A9003C37AC /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				FEF9AF452C80399F003C37AC /* AuthenticationManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -350,6 +361,7 @@
 				5085F2F92C7D734600F1DF47 /* FavoriteViewController.swift in Sources */,
 				5085F2F52C7D5C2A00F1DF47 /* LoginViewController.swift in Sources */,
 				FEF9AF432C800626003C37AC /* ProcessedResultToastView.swift in Sources */,
+				FEF9AF462C80399F003C37AC /* AuthenticationManager.swift in Sources */,
 				FB9172482C7D6DF20048C059 /* HomeViewController.swift in Sources */,
 				FB9172502C7D95C40048C059 /* HomeViewModel.swift in Sources */,
 				FB9172542C7DB6710048C059 /* CommentTableViewCell.swift in Sources */,

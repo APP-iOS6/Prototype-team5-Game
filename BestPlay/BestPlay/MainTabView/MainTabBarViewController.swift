@@ -11,6 +11,14 @@ import UIKit
 class MainTabBarViewController: UITabBarController, UITabBarControllerDelegate {
     
     static let shared: MainTabBarViewController = MainTabBarViewController()
+    private var prevSelectedViewController: UIViewController? = nil
+    private let loginWarningAlert = UIAlertController(title: "로그인이 필요한 기능입니다.", message: "로그인으로 이동하시겠습니까?", preferredStyle: .alert)
+    private lazy var loginAction = UIAlertAction(title: "로그인", style: .default) { [weak self] _ in
+        AuthenticationManager.shared.setLoggedinTrue()
+        
+        self?.dismiss(animated: false)
+    }
+    private let cancelAction = UIAlertAction(title: "취소", style: .cancel)
     
     private(set) lazy var home: HomeViewController = {
         let vc = HomeViewController()
@@ -40,6 +48,21 @@ class MainTabBarViewController: UITabBarController, UITabBarControllerDelegate {
         self.delegate = self
         view.backgroundColor = .systemBackground
         self.viewControllers = [home, posting, profile]
+        
+        loginWarningAlert.addAction(loginAction)
+        loginWarningAlert.addAction(cancelAction)
     }
     
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        prevSelectedViewController = tabBarController.selectedViewController
+        
+        return true
+    }
+    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        if AuthenticationManager.shared.loggedin == false {
+            present(loginWarningAlert, animated: true)
+            self.selectedViewController = prevSelectedViewController
+        }
+    }
 }
