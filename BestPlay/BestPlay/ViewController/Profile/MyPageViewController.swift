@@ -40,19 +40,11 @@ class MyPageViewController: UIViewController, UICollectionViewDataSource, UIColl
     private lazy var NameHStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
-        stackView.spacing = 30
+        stackView.spacing = 10
+        
+//        stackView.distribution = .fillEqually
         return stackView
     }()
-    
-    
-    
-    // collectionView의 위치를 잡아주는 collectionVStackView
-    //    private lazy var collectionVStackView: UIStackView = {
-    //        let stackView = UIStackView()
-    //        stackView.axis = .vertical
-    //        stackView.spacing = 30
-    //        return stackView
-    //    }()
     
     // userImage랑 userName 사이의 구분선
     private lazy var ButtonSeparator: UIView = {
@@ -71,6 +63,49 @@ class MyPageViewController: UIViewController, UICollectionViewDataSource, UIColl
         label.textAlignment = .left
         return label
     }()
+    
+    // 게임 이미지를 보여주는 ImageView
+    private lazy var gameImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "15")
+        imageView.contentMode = .scaleAspectFit
+        imageView.layer.masksToBounds = true
+        imageView.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        return imageView
+    }()
+    
+    // 자기의 게임 티어를 보여주는 Label
+    private lazy var userGameTear: UILabel = {
+        let label = UILabel()
+        label.text = "골드"
+        label.lineBreakMode = .byTruncatingTail
+        label.textAlignment = .left
+        label.font = .systemFont(ofSize: 17)
+        
+        return label
+    }()
+    
+    
+    private lazy var gameImageView2: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "16")
+        imageView.contentMode = .scaleAspectFit
+        imageView.layer.masksToBounds = true
+        imageView.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        return imageView
+    }()
+    
+    // 자기의 게임 티어를 보여주는 Label2
+    private lazy var userGameTear2: UILabel = {
+        let label = UILabel()
+        label.text = "언랭"
+        label.lineBreakMode = .byTruncatingTail
+        label.textAlignment = .left
+        label.font = .systemFont(ofSize: 17)
+        
+        return label
+    }()
+    
     
     // userImage를 보여주는 ImageVIew
     private lazy var userImageView: UIImageView = {
@@ -117,8 +152,6 @@ class MyPageViewController: UIViewController, UICollectionViewDataSource, UIColl
         
         return button
     }()
-
-    
     
     // 올린 게시물 수 만큼 보여주는 postLabel
     private lazy var postLabel: UILabel = {
@@ -164,10 +197,7 @@ class MyPageViewController: UIViewController, UICollectionViewDataSource, UIColl
         let button = UIButton(configuration: config)
         button.addAction(UIAction { _ in
             print("설정 진입")
-            
-            let viewController = SettingViewController()
-            
-            self.navigationController?.pushViewController(viewController, animated: true)
+            button.addTarget(self, action: #selector(self.goToSettings), for: .touchUpInside)
         }, for: .touchUpInside)
         return button
     }()
@@ -195,8 +225,7 @@ class MyPageViewController: UIViewController, UICollectionViewDataSource, UIColl
         
         title = "프로필"
         view.backgroundColor = .systemBackground
-        
-        
+   
         buildInterface()
     }
     
@@ -219,6 +248,10 @@ class MyPageViewController: UIViewController, UICollectionViewDataSource, UIColl
         
         vStackView.addArrangedSubview(NameHStackView)
         NameHStackView.addArrangedSubview(userNameLabel)
+        NameHStackView.addArrangedSubview(gameImageView)
+        NameHStackView.addArrangedSubview(userGameTear)
+        NameHStackView.addArrangedSubview(gameImageView2)
+        NameHStackView.addArrangedSubview(userGameTear2)
         
         vStackView.addArrangedSubview(ButtonHStackView)
         ButtonHStackView.addArrangedSubview(userEditButton)
@@ -226,8 +259,6 @@ class MyPageViewController: UIViewController, UICollectionViewDataSource, UIColl
         
         vStackView.addArrangedSubview(ButtonSeparator)
         vStackView.addArrangedSubview(collectionView)
-        //        vStackView.addArrangedSubview(collectionVStackView)
-        //        collectionVStackView.addArrangedSubview(collectionView)
     }
     
     // UI요소들의 레이아웃 제약조건을 설정하는 setupConstraints
@@ -250,20 +281,18 @@ class MyPageViewController: UIViewController, UICollectionViewDataSource, UIColl
             settingButton.trailingAnchor.constraint(equalTo: safeGuide.trailingAnchor, constant: -20),
             settingButton.topAnchor.constraint(equalTo: safeGuide.topAnchor, constant: -20),
             
+            
             imageHStackView.leadingAnchor.constraint(equalTo: safeGuide.leadingAnchor, constant: 10),
             imageHStackView.trailingAnchor.constraint(equalTo: safeGuide.trailingAnchor, constant: -60),
             
             userImageView.widthAnchor.constraint(equalToConstant: 90),
             userImageView.heightAnchor.constraint(equalToConstant: 90),
             
+            
             collectionView.heightAnchor.constraint(equalToConstant: 395),
             collectionView.leadingAnchor.constraint(equalTo: vStackView.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: vStackView.trailingAnchor),
             collectionView.centerXAnchor.constraint(equalTo: safeGuide.centerXAnchor),
-            
-            //            collectionVStackView.heightAnchor.constraint(equalToConstant: 390),
-            //            collectionVStackView.leadingAnchor.constraint(equalTo: vStackView.leadingAnchor),
-            //            collectionVStackView.trailingAnchor.constraint(equalTo: vStackView.trailingAnchor),
             
             
             ButtonSeparator.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
@@ -271,16 +300,11 @@ class MyPageViewController: UIViewController, UICollectionViewDataSource, UIColl
             ButtonSeparator.topAnchor.constraint(equalTo: ButtonHStackView.bottomAnchor, constant: 15),
             ButtonSeparator.heightAnchor.constraint(equalToConstant: 1),
             
+            
             ButtonHStackView.topAnchor.constraint(equalTo: NameHStackView.topAnchor, constant: 50),
             ButtonHStackView.centerXAnchor.constraint(equalTo: safeGuide.centerXAnchor),
-          
-            
-//            settingButton.trailingAnchor.constraint(equalTo: safeGuide.trailingAnchor, constant: -20),
-//            settingButton.topAnchor.constraint(equalTo: safeGuide.topAnchor, constant: -15),
-            
-            
-            
-            
+
+        
         ])
     }
     
@@ -321,8 +345,21 @@ class MyPageViewController: UIViewController, UICollectionViewDataSource, UIColl
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("선택한 이미지 번호: \(imageNames[indexPath.item])")
     }
+    
+    @objc func goToSettings() {
+        if let navigationController = self.navigationController {
+            let settingController = SettingViewController()
+            navigationController.pushViewController(settingController, animated: true)
+        } else {
+            print("Navigation controller is nil")
+        }
+    }
+    
 }
 
 #Preview {
     MyPageViewController()
 }
+
+
+
