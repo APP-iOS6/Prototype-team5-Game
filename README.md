@@ -12,6 +12,29 @@
 - 게임 영상, 글 포스팅
 - 좋아요 및 댓글을 통한 커뮤니케이션 제공
 
+
+# 주요화면
+
+![Simulator Screen Recording - iPhone 15 Pro - 2024-08-28 at 19 09 41](https://github.com/user-attachments/assets/8f6a7385-1986-48fe-b1ac-65db722ecb3a)
+![Simulator Screen Recording - iPhone 15 Pro - 2024-08-28 at 19 10 24](https://github.com/user-attachments/assets/258e4519-2d0e-42d3-ab54-8f1255f01952)
+
+
+https://github.com/user-attachments/assets/f739bc59-bd53-491a-9e83-13c506f0b017
+
+
+
+![Simulator Screen Recording - iPhone 15 Pro - 2024-08-28 at 19 54 33](https://github.com/user-attachments/assets/c3fa6905-e6a8-4022-a78d-15fda0b99632)
+
+
+
+
+
+
+
+
+
+
+
 <br>
 
 # 플로우 차트
