@@ -40,7 +40,9 @@ class MyPageViewController: UIViewController, UICollectionViewDataSource, UIColl
     private lazy var NameHStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
-        stackView.spacing = 30
+        stackView.spacing = 10
+        
+//        stackView.distribution = .fillEqually
         return stackView
     }()
     
@@ -61,6 +63,49 @@ class MyPageViewController: UIViewController, UICollectionViewDataSource, UIColl
         label.textAlignment = .left
         return label
     }()
+    
+    // 게임 이미지를 보여주는 ImageView
+    private lazy var gameImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "15")
+        imageView.contentMode = .scaleAspectFit
+        imageView.layer.masksToBounds = true
+        imageView.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        return imageView
+    }()
+    
+    // 자기의 게임 티어를 보여주는 Label
+    private lazy var userGameTear: UILabel = {
+        let label = UILabel()
+        label.text = "골드"
+        label.lineBreakMode = .byTruncatingTail
+        label.textAlignment = .left
+        label.font = .systemFont(ofSize: 17)
+        
+        return label
+    }()
+    
+    
+    private lazy var gameImageView2: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "16")
+        imageView.contentMode = .scaleAspectFit
+        imageView.layer.masksToBounds = true
+        imageView.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        return imageView
+    }()
+    
+    // 자기의 게임 티어를 보여주는 Label2
+    private lazy var userGameTear2: UILabel = {
+        let label = UILabel()
+        label.text = "언랭"
+        label.lineBreakMode = .byTruncatingTail
+        label.textAlignment = .left
+        label.font = .systemFont(ofSize: 17)
+        
+        return label
+    }()
+    
     
     // userImage를 보여주는 ImageVIew
     private lazy var userImageView: UIImageView = {
@@ -203,6 +248,10 @@ class MyPageViewController: UIViewController, UICollectionViewDataSource, UIColl
         
         vStackView.addArrangedSubview(NameHStackView)
         NameHStackView.addArrangedSubview(userNameLabel)
+        NameHStackView.addArrangedSubview(gameImageView)
+        NameHStackView.addArrangedSubview(userGameTear)
+        NameHStackView.addArrangedSubview(gameImageView2)
+        NameHStackView.addArrangedSubview(userGameTear2)
         
         vStackView.addArrangedSubview(ButtonHStackView)
         ButtonHStackView.addArrangedSubview(userEditButton)
@@ -227,12 +276,11 @@ class MyPageViewController: UIViewController, UICollectionViewDataSource, UIColl
             vStackView.topAnchor.constraint(equalTo: safeGuide.topAnchor),
             vStackView.leadingAnchor.constraint(equalTo: safeGuide.leadingAnchor),
             vStackView.trailingAnchor.constraint(equalTo: safeGuide.trailingAnchor),
-
             vStackView.bottomAnchor.constraint(equalTo: safeGuide.bottomAnchor, constant: -20),
-
             
             settingButton.trailingAnchor.constraint(equalTo: safeGuide.trailingAnchor, constant: -20),
             settingButton.topAnchor.constraint(equalTo: safeGuide.topAnchor, constant: -20),
+            
             
             imageHStackView.leadingAnchor.constraint(equalTo: safeGuide.leadingAnchor, constant: 10),
             imageHStackView.trailingAnchor.constraint(equalTo: safeGuide.trailingAnchor, constant: -60),
@@ -240,19 +288,23 @@ class MyPageViewController: UIViewController, UICollectionViewDataSource, UIColl
             userImageView.widthAnchor.constraint(equalToConstant: 90),
             userImageView.heightAnchor.constraint(equalToConstant: 90),
             
+            
             collectionView.heightAnchor.constraint(equalToConstant: 395),
             collectionView.leadingAnchor.constraint(equalTo: vStackView.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: vStackView.trailingAnchor),
             collectionView.centerXAnchor.constraint(equalTo: safeGuide.centerXAnchor),
+            
             
             ButtonSeparator.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             ButtonSeparator.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             ButtonSeparator.topAnchor.constraint(equalTo: ButtonHStackView.bottomAnchor, constant: 15),
             ButtonSeparator.heightAnchor.constraint(equalToConstant: 1),
             
+            
             ButtonHStackView.topAnchor.constraint(equalTo: NameHStackView.topAnchor, constant: 50),
             ButtonHStackView.centerXAnchor.constraint(equalTo: safeGuide.centerXAnchor),
 
+        
         ])
     }
     
@@ -308,3 +360,6 @@ class MyPageViewController: UIViewController, UICollectionViewDataSource, UIColl
 #Preview {
     MyPageViewController()
 }
+
+
+
