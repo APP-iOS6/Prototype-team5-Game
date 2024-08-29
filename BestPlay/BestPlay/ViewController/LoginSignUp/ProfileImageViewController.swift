@@ -13,10 +13,14 @@ class ProfileImageViewController: BaseSignUpViewController, UIImagePickerControl
     // 설명 라벨 설정
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
-        label.text = "사용하실 이미지를 선택해주세요."
+        label.text = """
+                     사용하실 프로필을 선택해주세요.
+                     지금 선택하지 않아도 괜찮습니다.
+                     프로필 편집에서 언제든지 변경할 수 있습니다.
+                     """
         label.font = UIFont(name: "Paperlogy 7 Bold", size: 18)
         label.textColor = UIColor.systemGray
-        label.numberOfLines = 1
+        label.numberOfLines = 0
         label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
         return label

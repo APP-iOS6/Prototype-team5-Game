@@ -17,6 +17,7 @@
 		5085F2F52C7D5C2A00F1DF47 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5085F2F42C7D5C2A00F1DF47 /* LoginViewController.swift */; };
 		5085F2F92C7D734600F1DF47 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5085F2F82C7D734600F1DF47 /* FavoriteViewController.swift */; };
 		5085F2FB2C7D74B500F1DF47 /* FavoriteGameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5085F2FA2C7D74B500F1DF47 /* FavoriteGameModel.swift */; };
+		50FC51D42C803A0200A2766F /* GameSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC51D32C803A0200A2766F /* GameSelectionCell.swift */; };
 		BE5446D52C7D706500C00293 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5446D42C7D706500C00293 /* SettingViewController.swift */; };
 		BE5446D72C7D7C6300C00293 /* TermsofUseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5446D62C7D7C6300C00293 /* TermsofUseViewController.swift */; };
 		BECB42422C7DC1CB00E170E7 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECB42412C7DC1CB00E170E7 /* MyPageViewController.swift */; };
@@ -58,6 +59,7 @@
 		5085F2F42C7D5C2A00F1DF47 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5085F2F82C7D734600F1DF47 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		5085F2FA2C7D74B500F1DF47 /* FavoriteGameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteGameModel.swift; sourceTree = "<group>"; };
+		50FC51D32C803A0200A2766F /* GameSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSelectionCell.swift; sourceTree = "<group>"; };
 		BE5446D42C7D706500C00293 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		BE5446D62C7D7C6300C00293 /* TermsofUseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsofUseViewController.swift; sourceTree = "<group>"; };
 		BECB42412C7DC1CB00E170E7 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				5006E5F02C7EEA33004B70C9 /* NicknameViewController.swift */,
 				5006E5F22C7EEA69004B70C9 /* ProfileImageViewController.swift */,
 				5085F2F82C7D734600F1DF47 /* FavoriteViewController.swift */,
+				50FC51D32C803A0200A2766F /* GameSelectionCell.swift */,
 			);
 			path = LoginSignUp;
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 				5006E5F32C7EEA69004B70C9 /* ProfileImageViewController.swift in Sources */,
 				FB9172372C7D58ED0048C059 /* MainTabBarViewController.swift in Sources */,
 				FE640D8E2C7D8E6E00A110D6 /* Game.swift in Sources */,
+				50FC51D42C803A0200A2766F /* GameSelectionCell.swift in Sources */,
 				FE640D952C7DB7FC00A110D6 /* CommunityUploadViewController.swift in Sources */,
 				FE640D852C7D743F00A110D6 /* BaseVerticalStackViewController.swift in Sources */,
 				5006E5EF2C7EEA0B004B70C9 /* PasswordViewController.swift in Sources */,
